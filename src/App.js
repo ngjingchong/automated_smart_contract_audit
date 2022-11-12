@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { Component }  from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Welcome from './pages/welcome';
@@ -10,7 +10,7 @@ import Audit_Process from './pages/audit_process';
 function App() {
   return (
     <Routes> {/* The Routes decides which component to show based on the current URL.*/}
-      <Route exact path='/' element={<React_App/>}></Route>
+      <Route path='/' element={<React_App/>}></Route>
       <Route path='/welcome' element={<Welcome/>}></Route>
       <Route path='/dashboard' element={<Dashboard/>}></Route>
       <Route path='/audit_process' element={<Audit_Process/>}></Route>
@@ -33,14 +33,6 @@ function React_App() {
         rel="noopener noreferrer"
       >
         Learn React
-      </a>
-      <a
-        className="App-link"
-        href="/home"
-        target="_blank" //to open the link in new tab
-        rel="noopener noreferrer"
-      >
-        Home
       </a>
       <a
         className="App-link"
