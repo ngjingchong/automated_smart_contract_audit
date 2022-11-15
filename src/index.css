@@ -1,3 +1,8 @@
+html, body, #root {
+  height: 550px;
+  width: 300px;
+  background-color: #F5F3FF;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

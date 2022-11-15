@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Welcome from './pages/welcome';
 import Dashboard from './pages/dashboard';
@@ -9,12 +9,14 @@ import Audit_Process from './pages/audit_process';
 
 function App() {
   return (
-    <Routes> {/* The Routes decides which component to show based on the current URL.*/}
-      <Route path='/' element={<React_App/>}></Route>
-      <Route path='/welcome' element={<Welcome/>}></Route>
-      <Route path='/dashboard' element={<Dashboard/>}></Route>
-      <Route path='/audit_process' element={<Audit_Process/>}></Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes> {/* The Routes decides which component to show based on the current URL.*/}
+        <Route path='/' element={<React_App/>}></Route>
+        <Route path='/welcome' element={<Welcome/>}></Route>
+        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/audit_process' element={<Audit_Process/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
