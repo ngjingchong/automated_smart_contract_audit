@@ -1,5 +1,5 @@
-import logo from '../images/ASCA_logo.png';
 import React, {Component } from "react";
+import Header from "./header";
 import StepProgressBar from 'react-step-progress';
 import 'react-step-progress/dist/index.css';
 import './audit_process.css';
@@ -28,8 +28,8 @@ function onFormSubmit() {
 class Audit_Process extends Component {
     render() {
       return (
-        <div id='audit_process' className='Audit_process'>        
-          <img src={logo} className="page_logo" alt="logo" />
+        <div id='audit_process' className='container_wrapper'>
+          <Header/>
           <div className='Step_container'>
             <StepProgressBar 
               startingStep={0} 

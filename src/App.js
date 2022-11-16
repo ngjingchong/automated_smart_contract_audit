@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes> {/* The Routes decides which component to show based on the current URL.*/}
-        <Route path='/' element={<React_App/>}></Route>
-        <Route path='/welcome' element={<Welcome/>}></Route>
+        {/* <Route path='/' element={<React_App/>}></Route> */}
+        <Route path='/' element={<Welcome/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}></Route>
         <Route path='/audit_process' element={<Audit_Process/>}></Route>
       </Routes>
