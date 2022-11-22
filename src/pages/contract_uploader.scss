@@ -1,0 +1,165 @@
+.uploader_container {
+  width: 100%;
+  border: 1px solid #838282;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+}
+
+.container_title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dropzone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-width: 2px;
+  border-radius: 4px;
+  border-color: #384EB7;
+  border-style: dashed;
+  background-color: #F8F8FF;
+  color: #0F0F0F;
+  outline: none;
+  transition: border .24s ease-in-out;
+
+  em {
+    color: #676767;
+  }
+
+  span {
+    font-weight: bold;
+    color: #483EA8;
+  }
+}
+aside {
+  margin: 25px 20px;
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .accepted {
+    font-weight: 500;
+    color:aquamarine;
+  }
+
+  .denied {
+    font-weight: 500;
+    color:indianred;
+  }
+}
+._2pGos {
+  padding: 0.5rem 0.75rem !important;
+}
+
+
+/* List Item for file uploaded */
+.file-item {
+    list-style: none;
+    margin: 1.2em 0;
+    background-color: #30f55440;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 1.2em 1.5em;
+    margin-left: -40px;
+
+    &.rejected {
+      background-color: #f56e3040 !important;
+    }
+    
+    svg {
+        color: #f55321;
+        
+        &:first-child {
+            font-size: 1.2em;
+            margin-right: 0.8em;
+        }
+    }
+
+    p {
+        flex: 1;
+        font-size: 0.9rem;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .actions {
+        justify-self: flex-end;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+}
+
+/* Container Tooltip */
+.tooltip {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+/* Style text tooltip */
+.tooltipText {
+  background-color: #fff;
+  position: absolute;
+  bottom: 130%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all .5s;
+}
+
+.fb {color: #3B5998;}
+.tw {color: #1da1f2}
+.wa {color:#25d366}
+
+
+/*  Membuat dan style tip*/
+.tooltipText::after {
+  content: '';
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  margin-left: 5%;
+}
+
+/* Style Icon */
+i {
+  background-color: rgba(168,164,164,0.3);
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+
+/* Hover text tooltip */
+.tooltip:hover .tooltipText{
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+/* Hover Background icon */
+.facebook:hover i {
+  background-color: #3B5998;
+}
+.twitter:hover i {
+  background-color: #1da1f2;
+}
+.whatsapp:hover i {
+  background-color: #25d366;
+}
+
