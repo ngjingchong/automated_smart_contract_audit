@@ -11,6 +11,8 @@ import AuditReport from './contract_audit_report';
 
 function Audit_Process() {
   const [files, setFiles] = useState([])
+  var [vulnerabilities, setVulnerabilities] = useState([{id:0, name:"Reentrancy"}, {id:1, name:"Indirect Execution of Unknown Code"}, {id:2, name:"Replay Signature"}])
+
 // console.log(files)
   const removeFile = (filename) => {
     setFiles(files.filter(file => file.name !== filename))
@@ -23,8 +25,6 @@ function Audit_Process() {
 
   // setup step validators, will be called before proceeding to the next step
   function step1Validator() {
-    console.log(files)
-    
     // // upload file
     // const formData = new FormData();
     // formData.append(
@@ -59,9 +59,9 @@ function Audit_Process() {
     alert("submited");
   }
 
-  useEffect(() => {
-    console.log(files)
-  });
+  // useEffect(() => {
+  //   console.log(files)
+  // });
 
   return (
     <div id='audit_process' className='container_wrapper'>
@@ -80,7 +80,7 @@ function Audit_Process() {
             {
               label: 'Vulnerability',
               name: 'step 2',
-              content: <VulnerabilityPicker/>,
+              content: <VulnerabilityPicker vulnerabilities={vulnerabilities}/>,
               validator: step2Validator
             },
             {
