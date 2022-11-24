@@ -7,13 +7,10 @@ function Dashboard() {
 
     return (
         <div id='dashboard' className="container_wrapper">
-          <Header/>
-          {/* <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+         
             <p>
                 Edit {file} and save to reload.
             </p>
-          </header> */}
         </div>
     )
 }
