@@ -91,7 +91,7 @@ function Audit_Process() {
             },
             {
               label: 'Audit Report',
-              name: 'step 3',
+              name: 'step 4',
               content: <AuditReport/>,
               validator: step3Validator
             }
