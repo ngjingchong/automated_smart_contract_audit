@@ -14,7 +14,7 @@ const VulnerabilityPicker = ({vulnerabilities}) => {
     function vulnerabilitiesAuditors() {
       if (vulnerabilities) {
         return (
-          <aside>
+          <aside className='vulnerabilities_container'>
             <ul className='vulnerability_col'>{vulnerabilityAuditor}</ul>
           </aside>
         )
