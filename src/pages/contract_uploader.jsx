@@ -5,21 +5,37 @@ import {useDropzone} from "react-dropzone";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt, faSpinner, faTrash, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import { saveAs } from 'file-saver';
 
 const ContractUploader = ({files, filesHandler, removeFile}) => {
+  // const fs = require("fs");
+  // const solc = require("solc");
+  // const onDrop = useCallback((acceptedFiles) => {
+  //   acceptedFiles.forEach((file) => {
+  //     const reader = new FileReader()
+
+  //     reader.onabort = () => console.log('file reading was aborted')
+  //     reader.onerror = () => console.log('file reading has failed')
+  //     reader.onload = () => {
+  //     // Do whatever you want with the file contents
+  //       const binaryStr = reader.result.toString
+        
+  //       //convert from binary to decimals, then to characters. 
+  //       console.log(reader.readAsText.toString)
+  //       var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+  //       FileSaver.saveAs(file);
+  //     }
+  //     reader.readAsArrayBuffer(file)
+  //   })
+    
+  // }, [])
   const {
     acceptedFiles,
     fileRejections,
     getRootProps,
     getInputProps
   } = useDropzone({   
-    maxFiles: 10,
-    accept: {
-      'application/pdf': [],
-      'text/plain': [],
-      'image/jpeg': [],
-      'image/png': []
-    }
+    maxFiles: 10  
   });
 
   //delete file
@@ -43,7 +59,8 @@ const ContractUploader = ({files, filesHandler, removeFile}) => {
           />
       </div>
       {
-        filesHandler(files)
+        // filesHandler(files)
+        console.log(file)
       }
     </li>
   ));
