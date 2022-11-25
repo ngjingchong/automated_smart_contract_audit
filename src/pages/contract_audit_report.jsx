@@ -1,4 +1,4 @@
-import logo from './../logo.svg';
+import complete from './../images/complete.svg';
 import React from "react";
 
 function AuditReport() {
@@ -7,12 +7,12 @@ function AuditReport() {
 
     return (
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit {file} and save to reload.
-            </p>
-          </header>
+          <img src={complete} alt="completion-logo" />
+          <h5 style={{color: "#19A81F"}}>
+            Smart Contract Audit Report is Ready !
+            <br /> 
+            <em>Click Here</em>
+          </h5>
         </div>
     )
 }
