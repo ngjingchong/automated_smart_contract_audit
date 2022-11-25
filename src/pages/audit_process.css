@@ -18,8 +18,14 @@
     width: max-content;
 }
 ._2Jtxm._2ZUAI ._2JvrO , ._2kL0S {
+    background-color: #53c330;
     height: 2.25rem;
     width: 2.25rem;
 }._2Jtxm._2ZUAI ._2JvrO>svg, ._2kL0S>svg {
     width: 1rem;
+}
+._2Jtxm::before {
+    background: linear-gradient(to left, #e7eaf3 50%, #53c330 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
 }
