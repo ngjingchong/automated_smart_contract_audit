@@ -6,7 +6,7 @@ import os
 
 contracts = ["Vault.sol", "Reentrancy.sol"] #get name of contracts to be audited in this session
 for c in contracts:
-  os.system('cmd /c "slither ./contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json reports/report_'+ c +'.json"')
+  os.system('cmd /c "slither ./src/contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_'+ c +'.json"')
 
 # @api.route('/data')
 # def my_profile():
