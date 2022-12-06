@@ -1,25 +1,53 @@
 import logo from './../logo.svg';
 import './contract_vulnerabilities_picker.scss';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VulnerabilityDetails from './contract_vulnerability_details';
+import axios from 'axios'
+import { firstLetterUppercase } from './helpers'
 
-const VulnerabilityPicker = ({vulnerabilities}) => {
+const VulnerabilityPicker = () => {
   const [vulnerability, setVulnerability] = useState()
   const [vulnerabilitiesLiked, setVulnerabilitiesLiked] = useState([])
   const [auditorPicked, setAuditor] = useState()
+  const [detectors, setDetectors] = useState([])
 
-  const vulnerabilityListItem = vulnerabilities && vulnerabilities.map(v => (
+  useEffect(() => { // run whenever user liked an detectors
+    console.log(vulnerabilitiesLiked)
+  },[vulnerabilitiesLiked])
+  useEffect(() => { // run when user picked an detector to scan against their smart contracts
+    if (auditorPicked) {
+      window.confirm("start scanning your smart contracts agains > " + auditorPicked + "?")
+    }
+    console.log(auditorPicked)
+  },[auditorPicked])
+  useEffect(() => { //get detectors on first render of this component
+    getDetectors();
+  }, [])
+
+  // due to asyn traits, the detectors is not stored persistently
+  const getDetectors = () => {
+    axios.get('/detectors')
+    .then((res) => {
+      // console.log(res.data)
+      setDetectors(res.data)
+    })
+    .catch((err) => {
+        // inform the user
+        console.error(err)
+    })
+  }
+
+  const vulnerabilityListItem = detectors && detectors.map(v => (
     <li
-      key={v.id}
-      id={v.id}
+      key={v[0].id}
+      id={v[0].id}
       className="vulnerability"
       onClick={() => setVulnerability(v)}>
-      <p>{v.title}</p>
+      <p>{firstLetterUppercase(v[0].id, '_', ' ')}</p>
     </li>
   ));
 
   function vulnerabilitiesMenu() {
-
     //Show all vulnerability auditor available if no specific vulnerability is setted
     if (vulnerability) {
       const back = () => {
