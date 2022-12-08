@@ -56,7 +56,7 @@ function ListOfContract() {
               <div className="fw-bold">{contract.name}</div>
               Uploaded {contract.date}
             </div>
-            <ListGroup.Item action style={styles.scanButton}>
+            <ListGroup.Item href="/activateMythril" method="post" style={styles.scanButton}>
               Scan
             </ListGroup.Item>
           </ListGroup.Item>
