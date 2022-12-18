@@ -5,21 +5,15 @@ import VulnerabilityDetails from './contract_vulnerability_details';
 import axios from 'axios'
 import { firstLetterUppercase } from './helpers'
 
-const VulnerabilityPicker = () => {
-  const [vulnerability, setVulnerability] = useState()
-  const [vulnerabilitiesLiked, setVulnerabilitiesLiked] = useState([])
-  const [auditorPicked, setAuditor] = useState()
+const VulnerabilityPicker = ({detectorSelected, set_scan_vulnerability}) => {
+  set_scan_vulnerability()
+  const [showDetector, setShowDetector] = useState()
   const [detectors, setDetectors] = useState([])
+  const [vulnerabilitiesLiked, setVulnerabilitiesLiked] = useState([])
 
-  useEffect(() => { // run whenever user liked an detectors
-    console.log(vulnerabilitiesLiked)
-  },[vulnerabilitiesLiked])
-  useEffect(() => { // run when user picked an detector to scan against their smart contracts
-    if (auditorPicked) {
-      window.confirm("start scanning your smart contracts agains > " + auditorPicked + "?")
-    }
-    console.log(auditorPicked)
-  },[auditorPicked])
+  // useEffect(() => { // run whenever user liked an detectors
+  //   // console.log(vulnerabilitiesLiked)
+  // },[vulnerabilitiesLiked])
   useEffect(() => { //get detectors on first render of this component
     getDetectors();
   }, [])
@@ -42,25 +36,37 @@ const VulnerabilityPicker = () => {
       key={v[0].id}
       id={v[0].id}
       className="vulnerability"
-      onClick={() => setVulnerability(v)}>
+      onClick={() => setShowDetector(v)}>
       <p>{firstLetterUppercase(v[0].id, '_', ' ')}</p>
     </li>
   ));
 
   function vulnerabilitiesMenu() {
     //Show all vulnerability auditor available if no specific vulnerability is setted
-    if (vulnerability) {
+    if (showDetector) {
       const back = () => {
-        setVulnerability("")
+        setShowDetector("")
       }
-      const like_vulnerability = (vulnerability) => {
-        setVulnerabilitiesLiked([...vulnerabilitiesLiked, vulnerability])
-      }
-      const scan_vulnerability = (vulnerabilityAuditorPicked) => {
-        setAuditor(vulnerabilityAuditorPicked)
-      }
+      
+      const set_like_vulnerability = (vulnerability) => {
+        // console.log(vulnerability)
+        // check if the state contains object
+        const isFound = vulnerabilitiesLiked.some(element => {
+          if (element === vulnerability)
+            return true;
+          return false;
+        });
 
-      return <VulnerabilityDetails vulnerability={vulnerability} back={back} like_vulnerability={like_vulnerability} scan_vulnerability={scan_vulnerability} />
+        // action acts according to the existence of the object
+        if (isFound) {
+          // filter out the element existed in the state & update the state
+          setVulnerabilitiesLiked(() => vulnerabilitiesLiked.filter((v) => v !== vulnerability))
+        } else {
+          // element is not existed in current state & append it into current state 
+          setVulnerabilitiesLiked([...vulnerabilitiesLiked, vulnerability])
+        }
+      }
+      return <VulnerabilityDetails showDetector={showDetector} back={back} vulnerabilitiesLiked={vulnerabilitiesLiked} set_like_vulnerability={set_like_vulnerability} set_scan_vulnerability={set_scan_vulnerability} />
     
     } else {
       return (
