@@ -63,7 +63,7 @@ function ListOfContract() {
         ))}
       </ListGroup>
       <div style={{ backgroundColor:"white"}}>
-        <Link to="/contract_uploader" className="btn btn-primary" style={{ width:"10rem", margin:"10px 35%"}}>Upload Contract</Link>
+        <Link to="/audit_process" className="btn btn-primary" style={{ width:"10rem", margin:"10px 35%"}}>Upload Contract</Link>
       </div>
     </div>
 );
