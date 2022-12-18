@@ -7,7 +7,7 @@ function Welcome() {
 
     return (
         <div style={{display: "contents"}}>
-          <img src={logo} className="page_logo" alt="logo" />
+          <img id="heading" src={logo} className="page_logo" alt="logo" />
         </div>
     )
 }
