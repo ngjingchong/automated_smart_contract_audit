@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from slither.detectors import all_detectors
+# from slither.detectors import all_detectors
 import inspect
-from slither.detectors.abstract_detector import DetectorClassification, AbstractDetector
+# from slither.detectors.abstract_detector import DetectorClassification, AbstractDetector
 import json
 
 
@@ -153,25 +153,34 @@ def available_detectors():
   return json.loads(json.dumps(detectors_json))
 
 def matrix_mapping (matrix):
-  if (matrix == 0): #High
+  if (matrix == 0): #High - 50
     return 4
-  elif (matrix == 1): #Medium
+  elif (matrix == 1): #Medium -30
     return 3
-  elif (matrix == 2): #Low
+  elif (matrix == 2): #Low - 15
     return 2
-  elif (matrix == 3): #Informational
+  elif (matrix == 3): #Informational -5
     return 1
   else: #Optimization
     return 0
 
 @api.route('/data')
-def my_profile():
-  response_body = {
-    "name": "Nagato",
-    "about" :"Hello! I'm a full stack developer that loves python and javascript"
-  }
+def display_report():
+  
+  file_path = r'.\src\reports\report_Reentrancy.sol.json'    
+  try:
+    with open(file_path, "r+") as fp:
+      # reading the contents before writing
+      return (json.loads(fp.read()))
+      fp.close()
+  except FileNotFoundError:
+    print("Please check the path.")
 
-  return response_body
+
+  # with open('../reports/report_Reentrancy.sol.json') as result:
+  #   report = json.load(result)
+  #   print(report)
+  return file_path
 
 if __name__ == "__main__":
   api.run(debug=True)

@@ -20,7 +20,7 @@ function AuditReport() {
   })
 
   return (
-    <div className="App">
+    <div className="App auditing_report">
       <img src={complete} alt="completion-logo" />
       <h5 style={{color: "#19A81F"}}>
         Smart Contract Audit Report is Ready !
