@@ -1,15 +1,14 @@
 import logo from '../images/ASCA_logo.png';
 import React from "react";
+import Nav from './nav';
 
-function Welcome() {
-    //special of jsx file is html code can be store in to var for processing
-    var file = <code >src/pages/welcome.jsx</code>;
-
+function Header() {
     return (
-        <div style={{display: "contents"}}>
-          <img src={logo} className="page_logo" alt="logo" />
-        </div>
+      <div style={{display: "contents"}}>
+        <img src={logo} className="page_logo" alt="logo" />
+        <Nav />
+      </div>
     )
 }
 
-export default Welcome;
+export default Header;
