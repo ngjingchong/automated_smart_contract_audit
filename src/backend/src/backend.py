@@ -1,27 +1,93 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from slither.detectors import all_detectors
 import inspect
 from slither.detectors.abstract_detector import DetectorClassification, AbstractDetector
 import json
 
+
 api = Flask(__name__)
 cors = CORS(api)
 
-# import os
+import sys
+import os
+# os.system('cmd /c "pip install -r requirements.txt"')
+
+# contracts = ["Vault.sol", "Reentrancy.sol"] #get name of contracts to be audited in this session
+# for c in contracts:
+  # os.system('cmd /c "slither ./contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_'+ c +'.json"')
 
 
-# for dir in detectors_dictionary:
-#   print(detectors_dictionary[dir])
+# file_path = r'.\contracts\Reentrancy.sol'    
+# try:
+#   with open(file_path, "r+") as fp:
+#     # reading the contents before writing
+#     # print(fp.read())
+#     # os.system('cmd /c "slither ' + fp.name + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --detect reentrancy-eth,reentrancy-no-eth,reentrancy-benign,reentrancy-events,reentrancy-unlimited-gas --json ./src/reports/report_testing.json"')
+#     fp.close()
+# except FileNotFoundError:
+#     print("Please check the path.")
 
-# detectors_ = [getattr(all_detectors, name) for name in dir(all_detectors)]
-# detectors = [d for d in detectors_ if inspect.isclass(d) and issubclass(d, AbstractDetector)]
+@api.route('/upload-contracts', methods=['GET', 'POST'])
+def contract_uploaded():
+  contracts = [{
+    "name": "Nagato",
+    "about" :"Hello! I'm a full stack developer that loves python and javascript"
+  }]
+  if request.method == 'POST':
+    # contracts = json.loads(request.data)
+    # file = contracts['contracts'][0]
+    # try:
+    #   os.system('cmd /c "slither ' + file['path'] + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_testing.json"')
+    # except:
+    #   print("Oops!", sys.exc_info()[0], "occurred.")
+    # print()
+    files = request.form.to_dict()
+    
+    # Iterate over the files and save them
+    # print(files)
+    # print(files.values())
+    
+    return(request.form.values())
+    # for file in files:
+      # file.save(os.path.join('/uploads', file.filename))
+    temp = []
+    for value in files:
+    #   os.system('cmd /c "slither ' + value + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_testing.json"')
+      # temp.append({
+      #   "file": value
+      # })
+      print(value)
+      # print("\n\n\n")
+    # for file in files:
+      # Save the file to the desired location
+      # print(file[0])
+      # os.system('cmd /c "slither ' + file + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_testing.json"')
 
-# for index, detector in enumerate(detectors):
-#   confident_level = -1
-#   impact_level = -1
-#   print(str(index) + "Impact : " + detector.IMPACT.name + " > " + str(detector.IMPACT.value))
-#   print(str(index) + "Confident : " + detector.CONFIDENCE.name + " > " + str(detector.CONFIDENCE.value))
+
+    # print(data)
+    return json.loads(json.dumps(temp))
+    contracts.append(request.files)
+  return contracts
+
+@api.route('/scan', methods=['GET', 'POST'])
+def scan_contracts():
+  if request.method == 'POST':
+    try: 
+      detector_list = json.loads(request.data)
+      detectors_str = ','.join(detector_list['detectors'])
+
+      # os.system('cmd /c "slither ' + file_path + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --detect ' + detectors_str +' --json ./src/reports/report_testing.json"')
+
+      return detectors_str
+    except:
+        print("Oops!", sys.exc_info()[0], "occurred.")
+        print("Next entry.") 
+        print()
+  
+  # get detector chosen to be scan and perform scanning
+  # upon scanning completion, save the result as json file
+  return "hello"
 
 @api.route('/detectors', methods=['GET'])
 def available_detectors():
@@ -31,6 +97,17 @@ def available_detectors():
   # print(len(*detectors))    #print length of the detectors
   # print(*detectors, sep='\n') #print each item in detectors in new line
 
+  # detectors_ = [getattr(all_detectors, name) for name in dir(all_detectors)]
+  # detectors = [d for d in detectors_ if inspect.isclass(d) and issubclass(d, AbstractDetector)]
+  # for index, detector in enumerate(detectors):
+  #   confident_level = -1
+  #   impact_level = -1
+  #   print(str(index) + "Impact : " + detector.IMPACT.name + " > " + str(detector.IMPACT.value))
+  #   print(str(index) + "Confident : " + detector.CONFIDENCE.name + " > " + str(detector.CONFIDENCE.value))
+
+  # for dir in detectors_dictionary:
+  #   print(detectors_dictionary[dir])
+  
   detectors_ = [getattr(all_detectors, name) for name in dir(all_detectors)]
   detectors = [d for d in detectors_ if inspect.isclass(d) and issubclass(d, AbstractDetector)]
   detectors_json = []
@@ -87,19 +164,6 @@ def matrix_mapping (matrix):
   else: #Optimization
     return 0
 
-# contracts = ["Vault.sol", "Reentrancy.sol"] #get name of contracts to be audited in this session
-# for c in contracts:
-#   os.system('cmd /c "slither ./../../../build/contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_'+ c +'.json"')
-@api.route('/upload-contracts', methods=['GET', 'POST'])
-def contract_uploaded():
-  contracts = [{
-    "name": "Nagato",
-    "about" :"Hello! I'm a full stack developer that loves python and javascript"
-  }]
-  if request.method == 'POST':
-    contracts.append(request.files)
-  return contracts
-
 @api.route('/data')
 def my_profile():
   response_body = {
@@ -108,7 +172,6 @@ def my_profile():
   }
 
   return response_body
-
 
 if __name__ == "__main__":
   api.run(debug=True)
