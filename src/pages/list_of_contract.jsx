@@ -1,36 +1,47 @@
 import ListGroup from 'react-bootstrap/ListGroup';
-import { useState, useRef, useEffect, React } from 'react';
+import { useState, useEffect, React } from 'react';
 import solidityLogo from '../images/solidityLogo.png';
 import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function ListOfContract() {
 
   const [contracts, setContracts] = useState([])
-  // const saved = JSON.parse(localStorage.getItem('items'))
 
-  // useEffect(() => {
-  //   setContracts(contracts => [...contracts, saved])
-  //   console.log(contracts)
-  // }, [contracts]);
+  useEffect(() => {
+    getAllContracts();
+  }, []);
+
+  function getAllContracts() {
+
+    axios.get('http://127.0.0.1:5000/file')
+      .then((res) => {
+        setContracts(res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
 
   return (
 
     <div>
       <ListGroup style={styles.listGroup}>
         {contracts.map((contract) => {
-          <ListGroup.Item className="d-flex justify-content-between align-items-center">
-            <img src={solidityLogo} className="solidity_logo" alt="logo" style={{ width: "3rem", height: "3rem" }} />
-            <div className="ms-2 me-auto">
-              <div className="fw-bold">{contract.data}</div>
-              Uploaded {contract.date}
-            </div>
-            <ListGroup.Item action style={styles.scanButton}>
-              Scan
+          return (
+            <ListGroup.Item className="d-flex justify-content-between align-items-center">
+              <img src={solidityLogo} className="solidity_logo" alt="logo" style={{ width: "3rem", height: "3rem" }} />
+              <div className="ms-2 me-auto">
+                <div className="fw-bold">{contract}</div>
+              </div>
+              <ListGroup.Item action style={styles.scanButton}>
+                Scan
+              </ListGroup.Item>
             </ListGroup.Item>
-          </ListGroup.Item>
-        }
-        )}
+          )
+        })}
+
       </ListGroup>
       <div style={{ backgroundColor: "white" }}>
         <Link to="/audit_process" className="btn btn-primary" style={{ width: "10rem", margin: "10px 35%" }}>Upload Contract</Link>

@@ -8,7 +8,7 @@ import json
 api = Flask(__name__)
 cors = CORS(api)
 
-# import os
+import os
 
 
 # for dir in detectors_dictionary:
@@ -100,26 +100,32 @@ def contract_uploaded():
     contracts.append(request.files)
   return contracts
 
-# @api.route('/data')
-# def my_profile():
-#   response_body = {
-#     "name": "Nagato",
-#     "about" :"Hello! I'm a full stack developer that loves python and javascript"
-#   }
+@api.route('/file')
+def display_file():
+  dir_path = r"\automated_smart_contract_audit\public\contracts"
+  res = os.listdir(dir_path)
+  return res
+  fp.close()
 
-#   return response_body
-
-@api.route('/data')
+@api.route('/report')
 def display_report():
-  
-  file_path = r'.\src\reports\report_Reentrancy.sol.json'    
-  try:
-    with open(file_path, "r+") as fp:
-      # reading the contents before writing
-      return (json.loads(fp.read()))
-      fp.close()
-  except FileNotFoundError:
-    print("Please check the path.")
+  dir_path = r"\automated_smart_contract_audit\src\backend\src\reports"
+  res = os.listdir(dir_path)
+  return res
+  fp.close()
+
+@api.route('/data', methods=['POST'])
+def display_report_result():
+  if request.method == 'POST':
+    req = request.json
+    file_path = r'".\src\reports\"' + req    
+    try:
+      with open(file_path, "r+") as fp:
+        # reading the contents before writing
+        return (json.loads(fp.read()))
+        fp.close()
+    except FileNotFoundError:
+      print("Please check the path.")
 
 
   # with open('../reports/report_Reentrancy.sol.json') as result:
