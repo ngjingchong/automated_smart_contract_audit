@@ -42,8 +42,8 @@ function ListOfReport() {
             <div className="ms-2 me-auto">
               <div className="fw-bold">{report}</div>
             </div>
-          <ListGroup.Item action key ={i} onClick={handleClick(report)} style={styles.scanButton}>
-              Read
+          <ListGroup.Item style={styles.scanButton} action href='/report_result'> 
+              Read 
             </ListGroup.Item>
           </ListGroup.Item>
         )
@@ -51,7 +51,7 @@ function ListOfReport() {
     </ListGroup>
   );
 }
-
+//action key ={i} onClick={handleClick(report)} 
 const styles = StyleSheet.create({
   scanButton: {
     width: "5rem",

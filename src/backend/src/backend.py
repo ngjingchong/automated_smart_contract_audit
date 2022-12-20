@@ -114,23 +114,17 @@ def display_report():
   return res
   fp.close()
 
-@api.route('/data', methods=['POST'])
+@api.route('/data')
 def display_report_result():
-  if request.method == 'POST':
-    req = request.json
-    file_path = r'".\src\reports\"' + req    
-    try:
-      with open(file_path, "r+") as fp:
-        # reading the contents before writing
-        return (json.loads(fp.read()))
-        fp.close()
-    except FileNotFoundError:
-      print("Please check the path.")
-
-
-  # with open('../reports/report_Reentrancy.sol.json') as result:
-  #   report = json.load(result)
-  #   print(report)
+  
+  file_path = r'.\src\reports\report_Reentrancy.sol.json'    
+  try:
+    with open(file_path, "r+") as fp:
+      # reading the contents before writing
+      return (json.loads(fp.read()))
+      fp.close()
+  except FileNotFoundError:
+    print("Please check the path.")
   return file_path
 
 if __name__ == "__main__":

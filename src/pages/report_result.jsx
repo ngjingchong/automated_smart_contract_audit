@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef, Component } from "react";
 import Header from "./header";
 import Table from 'react-bootstrap/Table';
 import pdfLogo from '../images/pdfLogo.png';
@@ -10,7 +10,9 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import Tour from 'reactour'
+import Tour from 'reactour';
+import jsPDF from 'jspdf';
+import { useReactToPrint } from "react-to-print";
 
 function ReportResult() {
 
@@ -159,42 +161,63 @@ function ReportResult() {
         }
     }
 
-    function printExternal(url) {
-        // var printWindow = window.open('../automated_smart_contract_audit/public/contracts/Reentrancy.sol');
+    const generatePDF = async () => {
+        const pdf = new jsPDF("landscape", "pt", "a4");
+        const data = await document.querySelector("#reportNow");
+        pdf.html(data).then(() => {
+            pdf.save("report.pdf");
+        });
+    };
 
-        // printWindow.addEventListener('load', function () {
-        //     if (Boolean(printWindow.chrome)) {
-        //         printWindow.print();
-        //         setTimeout(function () {
-        //             printWindow.close();
-        //         }, 500);
-        //     } else {
-        //         printWindow.print();
-        //         printWindow.close();
-        //     }
-        // }, true);
-    }
+    // function printExternal(url) {
+    // var printWindow = window.open('/automated_smart_contract_audit/public/logo192.png');
+
+    // printWindow.addEventListener('load', function () {
+    //     if (Boolean(printWindow.chrome)) {
+    //         printWindow.print();
+    //         setTimeout(function () {
+    //             printWindow.close();
+    //         }, 500);
+    //     } else {
+    //         printWindow.print();
+    //         printWindow.close();
+    //     }
+    // }, true);
+    // }
+
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+
+
+        content: () => componentRef.current,
+
+    });
 
     return (
-        <div>
-            <div style={{ marginLeft: "33rem" }}>
-                <Header />
-            </div>
+        <div id="reportNow" ref={componentRef}>
             <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
-
             <div style={styles.screenContent}>
                 <div style={styles.centerContent}>
-                    <img src={pdfLogo} className="pdf_logo" alt="logo" style={{ width: "5rem", height: "5rem" }} />
+                    <img src={pdfLogo} className="pdf_logo" alt="logo" style={styles.pdfImg} />
                     <div className="ms-2 me-auto">
-                        <div><Button style={{ fontWeight: 'bolder' }} variant="text" onClick={() => printExternal('../public/contracts/'+ slicePath)}>{chngType}</Button></div>
-                        Date Audited: {<br />} Vulnerability:
+                        <div>
+                            <Button style={styles.pdfButton} id="downloadPDF" variant="text" onClick={handlePrint}>{chngType}</Button>
+                            <div style={{ marginLeft: "15px", lineHeight: "1" }}>
+                                <p>Date Audited: </p>
+                                <p><b>00 Dec 0000</b></p>
+                                <p>Vulnerability:</p>
+                                <p><b>Pull Vulnerability</b></p>
+                            </div>
+                        </div>
                     </div>
+                    <div style={{marginRight:"75px", width: 130}}>
+                        <div id="percentage">
+                            <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                        </div>
+                        <p style={{textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
+                    </div>
+                </div>
 
-                </div>
-                <span>Report Severity: </span>
-                <div id="percentage" style={{ width: 100, position: 'relative' }}>
-                    <CircularProgressbar value={percentage} text={`${percentage}%`} />
-                </div>
                 <div style={styles.severityContainer}>
                     {severity.map((variant) => (
                         <Badge key={variant.color} bg={variant.color} style={{ margin: "15px" }}>
@@ -206,7 +229,7 @@ function ReportResult() {
                 <p style={styles.titleContainer}>
                     Vulnerabilities Descriptions
                 </p>
-                <Table style={{ minWidth: 650, borderCollapse: 'separate', borderSpacing: '0px 4px' }}>
+                <Table style={styles.styleTable}>
                     <thead style={{ textAlign: "center" }}>
                         <tr>
                             <th id="title">Title</th>
@@ -256,6 +279,10 @@ const steps = [
     {
         selector: "#percentage",
         content: "The percentage shows how dangerous of the smart contract is",
+    },
+    {
+        selector: "#downloadPDF",
+        content: "Click to download your smart contract in PDF form",
     },
 ];
 
@@ -345,18 +372,19 @@ const recommendation = [
 const styles = StyleSheet.create({
 
     centerContent: {
-        display: "flex", justifyContent: "center"
+        display: "flex", justifyContent: "center", paddingTop: "25px"
     },
 
     screenContent: {
-        position: 'absolute',
-        left: '50%',
-        top: '20.5rem',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: "white",
-        padding: "9px",
-        maxHeight: "400px",
-        overflowY: "scroll",
+        position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
+    },
+
+    pdfImg:{
+        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5rem" 
+    },
+
+    styleTable: {
+        minWidth: 650, borderCollapse: 'separate', borderSpacing: '0px 4px'
     },
 
     severityContainer: {
@@ -364,9 +392,12 @@ const styles = StyleSheet.create({
     },
 
     titleContainer: {
-        marginBottom: "5px", marginTop: "10px", fontWeight: "bold"
-    }
+        marginBottom: "5px", marginTop: "10px", fontWeight: "bold", textAlign: "center", fontSize: "18px"
+    },
 
+    pdfButton:{ 
+        fontWeight: 'bolder', textDecoration: "underline", color: "#020E5D" 
+    }
 });
 
 export default ReportResult;
