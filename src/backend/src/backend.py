@@ -114,18 +114,27 @@ def display_report():
   return res
   fp.close()
 
-@api.route('/data')
+@api.route('/data', methods=['POST', 'GET'])
 def display_report_result():
-  
-  file_path = r'.\src\reports\report_Reentrancy.sol.json'    
-  try:
-    with open(file_path, "r+") as fp:
-      # reading the contents before writing
-      return (json.loads(fp.read()))
-      fp.close()
-  except FileNotFoundError:
-    print("Please check the path.")
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    file_path = r'.\\src\\reports\\' + req3
+    try:
+      with open(file_path, "r+") as fp:
+        # reading the contents before writing
+        return (json.loads(fp.read()))
+        fp.close()
+    except FileNotFoundError:
+      print("Please check the path.")
   return file_path
+
+# @api.route('')
+# def print_sol():
+#   pdfFile = ""
+#   os.system('cons_rcp.exe -s "\automated_smart_contract_audit\public\contracts\Reentrancy.sol" -o "\automated_smart_contract_audit\public\contract_Reentrancy.pdf"')
+#   return pdfFile
 
 if __name__ == "__main__":
   api.run(debug=True)

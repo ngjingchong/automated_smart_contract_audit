@@ -13,9 +13,12 @@ import Swal from 'sweetalert2';
 import Tour from 'reactour';
 import jsPDF from 'jspdf';
 import { useReactToPrint } from "react-to-print";
+import { useLocation } from "react-router-dom";
 
-function ReportResult() {
+const ReportResult = () => {
 
+    const { state } = useLocation();
+    console.log(state)
     const [isTourOpen, setIsTourOpen] = useState(false);
     const [notes, setNotes] = useState([]);
     const [items, setItems] = useState([]);
@@ -25,22 +28,25 @@ function ReportResult() {
     let chngType = slicePath.replace('sol', 'pdf');
 
     useEffect(() => {
-        getAllNotes();
+        setNotes(state.results.detectors);
+        setItems(state.results.detectors[0].elements[0].source_mapping.filename_relative)
         setPercentage(((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5))
         localStorage.setItem('items', JSON.stringify(items));
     }, [items]);
 
-    function getAllNotes() {
-
-        axios.get('http://127.0.0.1:5000/data')
-            .then((res) => {
-                setNotes(res.data.results.detectors);
-                setItems(res.data.results.detectors[0].elements[0].source_mapping.filename_relative);
-            })
-            .catch((err) => {
-                console.error(err)
-            })
-    }
+    // function getAllNotes() {
+    //     setNotes(response.data.results.detectors);
+    //     setItems(response.data.results.detectors[0].elements[0].source_mapping.filename_relative)
+    // axios.get('http://127.0.0.1:5000/data')
+    //     .then((res) => {
+    //         console.log(res)
+    //         setNotes(res.data.results.detectors);
+    //         setItems(res.data.results.detectors[0].elements[0].source_mapping.filename_relative);
+    //     })
+    //     .catch((err) => {
+    //         console.error(err)
+    //     })
+    // }
 
     var highCount = 0, mediumCount = 0, minorCount = 0, infoCount = 0, optiCount = 0
 
@@ -161,13 +167,13 @@ function ReportResult() {
         }
     }
 
-    const generatePDF = async () => {
-        const pdf = new jsPDF("landscape", "pt", "a4");
-        const data = await document.querySelector("#reportNow");
-        pdf.html(data).then(() => {
-            pdf.save("report.pdf");
-        });
-    };
+    // const generatePDF = async () => {
+    //     const pdf = new jsPDF("landscape", "pt", "a4");
+    //     const data = await document.querySelector("#reportNow");
+    //     pdf.html(data).then(() => {
+    //         pdf.save("report.pdf");
+    //     });
+    // };
 
     // function printExternal(url) {
     // var printWindow = window.open('/automated_smart_contract_audit/public/logo192.png');
@@ -187,10 +193,7 @@ function ReportResult() {
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
-
-
         content: () => componentRef.current,
-
     });
 
     return (
@@ -210,11 +213,11 @@ function ReportResult() {
                             </div>
                         </div>
                     </div>
-                    <div style={{marginRight:"75px", width: 130}}>
+                    <div style={{ marginRight: "75px", width: 130 }}>
                         <div id="percentage">
                             <CircularProgressbar value={percentage} text={`${percentage}%`} />
                         </div>
-                        <p style={{textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
+                        <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
                     </div>
                 </div>
 
@@ -379,8 +382,8 @@ const styles = StyleSheet.create({
         position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
     },
 
-    pdfImg:{
-        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5rem" 
+    pdfImg: {
+        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5rem"
     },
 
     styleTable: {
@@ -395,8 +398,8 @@ const styles = StyleSheet.create({
         marginBottom: "5px", marginTop: "10px", fontWeight: "bold", textAlign: "center", fontSize: "18px"
     },
 
-    pdfButton:{ 
-        fontWeight: 'bolder', textDecoration: "underline", color: "#020E5D" 
+    pdfButton: {
+        fontWeight: 'bolder', textDecoration: "underline", color: "#020E5D"
     }
 });
 
