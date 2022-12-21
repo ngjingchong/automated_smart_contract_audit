@@ -8,12 +8,10 @@ import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import Tour from 'reactour';
-import jsPDF from 'jspdf';
-import { useReactToPrint } from "react-to-print";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ReportResult = () => {
 
@@ -23,6 +21,7 @@ const ReportResult = () => {
     const [notes, setNotes] = useState([]);
     const [items, setItems] = useState([]);
     const [percentage, setPercentage] = useState(0);
+    const navigate = useNavigate();
 
     let slicePath = items.toString().replace('src/contracts/', '');
     let chngType = slicePath.replace('sol', 'pdf');
@@ -31,22 +30,7 @@ const ReportResult = () => {
         setNotes(state.results.detectors);
         setItems(state.results.detectors[0].elements[0].source_mapping.filename_relative)
         setPercentage(((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5))
-        localStorage.setItem('items', JSON.stringify(items));
     }, [items]);
-
-    // function getAllNotes() {
-    //     setNotes(response.data.results.detectors);
-    //     setItems(response.data.results.detectors[0].elements[0].source_mapping.filename_relative)
-    // axios.get('http://127.0.0.1:5000/data')
-    //     .then((res) => {
-    //         console.log(res)
-    //         setNotes(res.data.results.detectors);
-    //         setItems(res.data.results.detectors[0].elements[0].source_mapping.filename_relative);
-    //     })
-    //     .catch((err) => {
-    //         console.error(err)
-    //     })
-    // }
 
     var highCount = 0, mediumCount = 0, minorCount = 0, infoCount = 0, optiCount = 0
 
@@ -167,37 +151,12 @@ const ReportResult = () => {
         }
     }
 
-    // const generatePDF = async () => {
-    //     const pdf = new jsPDF("landscape", "pt", "a4");
-    //     const data = await document.querySelector("#reportNow");
-    //     pdf.html(data).then(() => {
-    //         pdf.save("report.pdf");
-    //     });
-    // };
-
-    // function printExternal(url) {
-    // var printWindow = window.open('/automated_smart_contract_audit/public/logo192.png');
-
-    // printWindow.addEventListener('load', function () {
-    //     if (Boolean(printWindow.chrome)) {
-    //         printWindow.print();
-    //         setTimeout(function () {
-    //             printWindow.close();
-    //         }, 500);
-    //     } else {
-    //         printWindow.print();
-    //         printWindow.close();
-    //     }
-    // }, true);
-    // }
-
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
+    const handlePrint = () => {
+        navigate('../print_report', { state: state });
+    }
 
     return (
-        <div id="reportNow" ref={componentRef}>
+        <div id="reportNow">
             <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
             <div style={styles.screenContent}>
                 <div style={styles.centerContent}>
@@ -281,11 +240,11 @@ const steps = [
     },
     {
         selector: "#percentage",
-        content: "The percentage shows how dangerous of the smart contract is",
+        content: "Percentage shows how dangerous of the smart contract is",
     },
     {
         selector: "#downloadPDF",
-        content: "Click to download your smart contract in PDF form",
+        content: "Click here to download the report",
     },
 ];
 
