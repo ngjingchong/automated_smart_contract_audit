@@ -1,0 +1,35 @@
+.login_btn_container {
+    display: flex;
+    justify-content: center;
+    
+    .facebook_login_btn {
+        display: flex;
+        padding: 10px 0px 10px 5px;
+        width: 180px;
+        height: 45px;
+        border-radius: 2px;
+        font-size: 14px;
+        text-transform: capitalize;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        align-items: center;
+        color: white;
+        background-color: #4267b2;
+        border: none;
+        box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+    }
+}
+
+.profile_icon {
+    border-radius: 50%;
+    margin-bottom: unset;
+    float: left;
+    display: flex;
+    margin-bottom: -10px;
+    margin-top: 2px;
+    margin-left: 10px;
+    margin-right: 12px;
+    justify-content: center
+}
