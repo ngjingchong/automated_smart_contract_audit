@@ -130,11 +130,5 @@ def display_report_result():
       print("Please check the path.")
   return file_path
 
-# @api.route('')
-# def print_sol():
-#   pdfFile = ""
-#   os.system('cons_rcp.exe -s "\automated_smart_contract_audit\public\contracts\Reentrancy.sol" -o "\automated_smart_contract_audit\public\contract_Reentrancy.pdf"')
-#   return pdfFile
-
 if __name__ == "__main__":
   api.run(debug=True)

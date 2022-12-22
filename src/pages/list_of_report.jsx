@@ -1,9 +1,10 @@
 import ListGroup from 'react-bootstrap/ListGroup';
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import noteLogo from '../images/note.png';
 import { StyleSheet } from 'react-native';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function ListOfReport() {
 
@@ -34,27 +35,50 @@ function ListOfReport() {
       })
       .then((response) => {
         console.log(response)
-        navigate('../report_result', { state: response.data });
+        if (response.data.results && Object.entries(response.data.results).length !== 0) {
+          navigate('../report_result', { state: response.data });
+        }
+        else {
+          Swal.fire({
+            title: "Congratulation!",
+            html: "<b>Your smart contract is save and can be deployed!<b>",
+            confirmButtonText: "THANKS",
+          });
+        }
       })
   }
 
-  return (
-    <ListGroup style={styles.listGroup}>
-      {reports.map((report, i) => {
-        return (
-          <ListGroup.Item className="d-flex justify-content-between align-items-center">
-            <img src={noteLogo} className="note_logo" alt="logo" style={{ width: "2.5rem", height: "3rem" }} />
-            <div className="ms-2 me-auto">
-              <div className="fw-bold">{report.replace('.sol.json', '')}</div>
-            </div>
-            <ListGroup.Item style={styles.scanButton} key={i} value={report} action onClick={e => handleSubmit(e.target.value)}>
-              Read
+  if (reports.length === 0) {
+    return (
+      <ListGroup style={styles.listGroup}>
+        <ListGroup.Item className="d-flex justify-content-between align-items-center">
+          <div className="ms-2 me-auto">
+            <div>No Report Recorded.</div>
+          </div>
+        </ListGroup.Item>
+      </ListGroup>
+    )
+  }
+  else {
+    return (
+      <ListGroup style={styles.listGroup}>
+        {reports.map((report, i) => {
+          return (
+            <ListGroup.Item className="d-flex justify-content-between align-items-center">
+              <img src={noteLogo} className="note_logo" alt="logo" style={{ width: "2.5rem", height: "2.8rem" }} />
+              <div className="ms-2 me-auto">
+                <div className="fw-bold">{report.replace('.sol.json', '')}</div>
+              </div>
+              <ListGroup.Item style={styles.scanButton} key={i} value={report} action onClick={e => handleSubmit(e.target.value)}>
+                Read
+              </ListGroup.Item>
             </ListGroup.Item>
-          </ListGroup.Item>
-        )
-      })}
-    </ListGroup>
-  );
+          )
+        })}
+      </ListGroup>
+    );
+  }
+
 }
 
 const styles = StyleSheet.create({

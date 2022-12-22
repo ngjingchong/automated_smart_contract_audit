@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef, Component } from "react";
 import Header from "./header";
 import Table from 'react-bootstrap/Table';
-import pdfLogo from '../images/pdfLogo.png';
+import noteLogo from '../images/note.png';
 import { StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,7 @@ const ReportResult = () => {
     const navigate = useNavigate();
 
     let slicePath = items.toString().replace('src/contracts/', '');
-    let chngType = slicePath.replace('sol', 'pdf');
+    let chngType = slicePath.replace('.sol', '');
 
     useEffect(() => {
         setNotes(state.results.detectors);
@@ -160,10 +160,10 @@ const ReportResult = () => {
             <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
             <div style={styles.screenContent}>
                 <div style={styles.centerContent}>
-                    <img src={pdfLogo} className="pdf_logo" alt="logo" style={styles.pdfImg} />
+                    <img src={noteLogo} className="note_logo" alt="logo" style={styles.noteImg} />
                     <div className="ms-2 me-auto">
                         <div>
-                            <Button style={styles.pdfButton} id="downloadPDF" variant="text" onClick={handlePrint}>{chngType}</Button>
+                            <Button style={styles.pdfButton} id="downloadPDF" variant="text" onClick={handlePrint}>{chngType} Documentation</Button>
                             <div style={{ marginLeft: "15px", lineHeight: "1" }}>
                                 <p>Date Audited: </p>
                                 <p><b>00 Dec 0000</b></p>
@@ -244,7 +244,7 @@ const steps = [
     },
     {
         selector: "#downloadPDF",
-        content: "Click here to download the report",
+        content: "Click here to print report",
     },
 ];
 
@@ -341,8 +341,8 @@ const styles = StyleSheet.create({
         position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
     },
 
-    pdfImg: {
-        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5rem"
+    noteImg: {
+        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5.2rem"
     },
 
     styleTable: {
