@@ -5,6 +5,8 @@ import { StyleSheet } from 'react-native';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function ListOfReport() {
 
@@ -48,6 +50,47 @@ function ListOfReport() {
       })
   }
 
+  function deleteFileHandler(delpath) {
+    console.log(delpath)
+    Swal.fire({
+      title: 'Are you sure to delete file?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios(
+          {
+            url: 'http://127.0.0.1:5000/deleteReport',
+            method: 'POST',
+            data: [delpath]
+          })
+          .then((response) => {
+            console.log(response)
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your file has been deleted.',
+              icon: 'success'
+            }).then(function () {
+              window.location.reload();
+            });
+          })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelled',
+          'Your file is safe :)',
+          'error'
+        )
+      }
+    });
+  }
+
   if (reports.length === 0) {
     return (
       <ListGroup style={styles.listGroup}>
@@ -71,6 +114,11 @@ function ListOfReport() {
               </div>
               <ListGroup.Item style={styles.scanButton} key={i} value={report} action onClick={e => handleSubmit(e.target.value)}>
                 Read
+              </ListGroup.Item>
+              <ListGroup.Item style={{padding: 0, margin: 15, width: "8px", borderStyle:"none"}} actionkey={i} name={report} onClick={e => deleteFileHandler(report)} >
+                <FontAwesomeIcon
+                  icon={faTrash} color="#D4D4D4" style={{fontSize: "1.3rem"}}
+                />
               </ListGroup.Item>
             </ListGroup.Item>
           )

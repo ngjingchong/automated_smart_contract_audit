@@ -16,21 +16,15 @@ import { useNavigate } from "react-router-dom";
 const ReportResult = () => {
 
     const { state } = useLocation();
-    console.log(state)
     const [isTourOpen, setIsTourOpen] = useState(false);
     const [notes, setNotes] = useState([]);
-    const [items, setItems] = useState([]);
     const [percentage, setPercentage] = useState(0);
     const navigate = useNavigate();
 
-    let slicePath = items.toString().replace('src/contracts/', '');
-    let chngType = slicePath.replace('.sol', '');
-
     useEffect(() => {
         setNotes(state.results.detectors);
-        setItems(state.results.detectors[0].elements[0].source_mapping.filename_relative)
-        setPercentage(((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5))
-    }, [items]);
+        setPercentage(totalPercentage)
+    }, [percentage]);
 
     var highCount = 0, mediumCount = 0, minorCount = 0, infoCount = 0, optiCount = 0
 
@@ -53,7 +47,8 @@ const ReportResult = () => {
     }
 
     let totalErr = highCount + mediumCount + minorCount + infoCount + optiCount;
-
+    let totalPercentage = ((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5) + ((optiCount / totalErr) * 0)
+    
     const severity = [
         { count: highCount, label: 'High', color: 'danger' },
         { count: mediumCount, label: 'Medium', color: 'warning' },
@@ -67,7 +62,7 @@ const ReportResult = () => {
         for (let j = 0; j < notes.length; j++) {
             if (notes[j].id == _id) {
                 console.log(notes[j])
-                let slicePath = notes[j].description.replaceAll('src/contracts/Reentrancy.sol', 'line ');
+                let slicePath = notes[j].description;
                 let formatted = slicePath.replaceAll('\n\t', ' <br> \t')
                 Swal.fire({
                     title: "Severity Description",
@@ -97,11 +92,17 @@ const ReportResult = () => {
             if (notes[currentStep].id == _id) {
                 currently = notes[currentStep].elements
                 for (let p = 0; p < currently.length; p++) {
-                    for (let m = 0; m < currently[p].source_mapping.lines.length; m++) {
-                        allLines.push(currently[p].source_mapping.lines[m])
+                    if (currently.length !== 0) {
+                        for (let m = 0; m < currently[p].source_mapping.lines.length; m++) {
+                            allLines.push(currently[p].source_mapping.lines[m])
+                        }
+                        arraySeq[p] = new Array(allLines)
+                        allLines = [];
                     }
-                    arraySeq[p] = new Array(allLines)
-                    allLines = [];
+                    else {
+                        arraySeq[p] = "none"
+                        allLines = [];
+                    }
                 }
             }
         }
@@ -110,7 +111,6 @@ const ReportResult = () => {
         if (currently.length != 0) {
 
             for (k = 0; k < currently.length;) {
-                // console.log(arraySeq[k])
                 result = await swalQueueStep.fire({
                     showCloseButton: true,
                     confirmButtonText: 'NEXT/OK',
@@ -160,11 +160,10 @@ const ReportResult = () => {
             <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
             <div style={styles.screenContent}>
                 <div style={styles.centerContent}>
-                    <img src={noteLogo} className="note_logo" alt="logo" style={styles.noteImg} />
+                    <Button variant="text" onClick={handlePrint}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
                     <div className="ms-2 me-auto">
                         <div>
-                            <Button style={styles.pdfButton} id="downloadPDF" variant="text" onClick={handlePrint}>{chngType} Documentation</Button>
-                            <div style={{ marginLeft: "15px", lineHeight: "1" }}>
+                            <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
                                 <p>Date Audited: </p>
                                 <p><b>00 Dec 0000</b></p>
                                 <p>Vulnerability:</p>
@@ -342,7 +341,7 @@ const styles = StyleSheet.create({
     },
 
     noteImg: {
-        marginLeft: "55px", marginTop: "40px", width: "5rem", height: "5.2rem"
+       marginLeft: "55px", width: "5rem", height: "5.2rem"
     },
 
     styleTable: {
@@ -356,10 +355,6 @@ const styles = StyleSheet.create({
     titleContainer: {
         marginBottom: "5px", marginTop: "10px", fontWeight: "bold", textAlign: "center", fontSize: "18px"
     },
-
-    pdfButton: {
-        fontWeight: 'bolder', textDecoration: "underline", color: "#020E5D"
-    }
 });
 
 export default ReportResult;

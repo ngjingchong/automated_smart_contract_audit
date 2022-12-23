@@ -102,7 +102,7 @@ def contract_uploaded():
 
 @api.route('/file')
 def display_file():
-  dir_path = r"\automated_smart_contract_audit\public\contracts"
+  dir_path = r"\automated_smart_contract_audit\src\backend\contracts"
   res = os.listdir(dir_path)
   return res
   fp.close()
@@ -128,6 +128,28 @@ def display_report_result():
         fp.close()
     except FileNotFoundError:
       print("Please check the path.")
+  return file_path
+
+@api.route('/deleteContract', methods=['POST', 'GET'])
+def delete_contract():
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    print(req)
+    file_path = r'\automated_smart_contract_audit\src\backend\contracts\\' + req3
+    res = os.remove(file_path)
+  return file_path
+
+@api.route('/deleteReport', methods=['POST', 'GET'])
+def delete_report():
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    print(req)
+    file_path = r'.\\src\\reports\\' + req3
+    res = os.remove(file_path)
   return file_path
 
 if __name__ == "__main__":

@@ -12,8 +12,14 @@ const PrintReport = () => {
     const [fileName, setFileName] = useState("");
 
     useEffect(() => {
+        
         setNotes(state.results.detectors);
-        setFileName(state.results.detectors[0].elements[0].source_mapping.filename_short);
+        for (let k = 0; k < notes.length; k++) {
+            if (notes[k].elements.length !== 0) {
+                setFileName(state.results.detectors[k].elements[k].source_mapping.filename_relative)
+                setFileName(fileName.toString.replaceAll('contracts/', ''))
+            }
+        }
     }, []);
 
     const componentRef = useRef();
@@ -28,7 +34,7 @@ const PrintReport = () => {
                 <Button variant="primary" onClick={handlePrint} style={{ marginTop: "30px", float: "right" }}>Print this out!</Button>
                 <div ref={componentRef}>
                     <div style={{ textDecoration:"underline", marginLeft:"30px", marginTop: "100px" }}>
-                        <h3>{fileName.replace('src/contracts/', '')} Report</h3>
+                        <h3>{fileName.replace('contracts/', '')} Report</h3>
                     </div>
                     {notes.map((note) => {
                         console.log(note)
@@ -37,7 +43,7 @@ const PrintReport = () => {
                                 <div className="card" style={styles.card}>
                                     <h3 style={styles.titleText}>{note.check}</h3>
                                     <p><b>Impact:</b> {note.impact}</p>
-                                    <p><b>Description:</b><br />{note.description.replaceAll('src/contracts/Reentrancy.sol', 'line ')} </p>
+                                    <p><b>Description:</b><br />{note.description.replaceAll('contracts/', '').replaceAll('#', ' line - ')} </p>
                                     {note.elements.map((element) => {
                                         return (
                                             <ul>
