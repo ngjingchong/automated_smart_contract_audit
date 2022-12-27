@@ -1,4 +1,3 @@
-import logo from './../logo.svg';
 import './contract_vulnerabilities_picker.scss';
 import React, { useState, useEffect } from "react";
 import VulnerabilityDetails from './contract_vulnerability_details';
@@ -15,6 +14,7 @@ const VulnerabilityPicker = ({detectorSelected, set_scan_vulnerability}) => {
   //   // console.log(vulnerabilitiesLiked)
   // },[vulnerabilitiesLiked])
   useEffect(() => { //get detectors on first render of this component
+    document.getElementsByClassName("_hsN1w")[0].style.display = "none"
     getDetectors();
   }, [])
 
@@ -31,15 +31,33 @@ const VulnerabilityPicker = ({detectorSelected, set_scan_vulnerability}) => {
     })
   }
 
-  const vulnerabilityListItem = detectors && detectors.map(v => (
-    <li
-      key={v[0].id}
-      id={v[0].id}
-      className="vulnerability"
-      onClick={() => setShowDetector(v)}>
-      <p>{firstLetterUppercase(v[0].id, '_', ' ')}</p>
-    </li>
-  ));
+  const vulnerabilityListItem = detectors && detectors.map(v => {
+    if (v[0].id === '' && detectors.length%2 === 0){
+      // true when length is even and the id is null ''
+      // because need an empty li when the detectors return is odd to enhance display purpose
+      return (
+        <li
+          style={{backgroundImage:"unset", backgroundColor: "unset", cursor: "initial"}}
+          key={v[0].id}
+          id={v[0].id}>
+        </li>
+      )
+    } else {
+      if (v[0].id !== ''){
+        // recheck and only print when the id is not null ''
+        return (
+          <li
+            key={v[0].id}
+            id={v[0].id}
+            className="vulnerability"
+            onClick={() => setShowDetector(v)}>
+            <p>{firstLetterUppercase(v[0].id, '_', ' ')}</p>
+          </li>
+        )
+      }
+      return <></>
+    }
+  });
 
   function vulnerabilitiesMenu() {
     //Show all vulnerability auditor available if no specific vulnerability is setted
