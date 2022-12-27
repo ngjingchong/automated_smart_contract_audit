@@ -22,8 +22,14 @@ const ReportResult = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setNotes(state.results.detectors);
-        setPercentage(totalPercentage)
+        if (state.results && Object.entries(state.results).length !== 0) {
+            setNotes(state.results.detectors);
+            setPercentage(totalPercentage)
+        }
+        else
+        {
+            setPercentage(0)
+        }
     }, [percentage]);
 
     var highCount = 0, mediumCount = 0, minorCount = 0, infoCount = 0, optiCount = 0
@@ -48,7 +54,7 @@ const ReportResult = () => {
 
     let totalErr = highCount + mediumCount + minorCount + infoCount + optiCount;
     let totalPercentage = ((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5) + ((optiCount / totalErr) * 0)
-    
+
     const severity = [
         { count: highCount, label: 'High', color: 'danger' },
         { count: mediumCount, label: 'Medium', color: 'warning' },
@@ -155,73 +161,141 @@ const ReportResult = () => {
         navigate('../print_report', { state: state });
     }
 
-    return (
-        <div id="reportNow">
-            <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
-            <div style={styles.screenContent}>
-                <div style={styles.centerContent}>
-                    <Button variant="text" onClick={handlePrint}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
-                    <div className="ms-2 me-auto">
-                        <div>
-                            <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
-                                <p>Date Audited: </p>
-                                <p><b>00 Dec 0000</b></p>
-                                <p>Vulnerability:</p>
-                                <p><b>Pull Vulnerability</b></p>
+    if (notes.length > 0) {
+        return (
+            <div id="reportNow">
+                <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
+                <div style={styles.screenContent}>
+                    <div style={styles.centerContent}>
+                        <Button variant="text" onClick={handlePrint}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
+                        <div className="ms-2 me-auto">
+                            <div>
+                                <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
+                                    <p>Date Audited: </p>
+                                    <p><b>00 Dec 0000</b></p>
+                                    <p>Vulnerability:</p>
+                                    <p><b>Pull Vulnerability</b></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div style={{ marginRight: "75px", width: 130 }}>
-                        <div id="percentage">
-                            <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                        <div style={{ marginRight: "75px", width: 130 }}>
+                            <div id="percentage">
+                                <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                            </div>
+                            <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
                         </div>
-                        <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
                     </div>
-                </div>
 
-                <div style={styles.severityContainer}>
-                    {severity.map((variant) => (
-                        <Badge key={variant.color} bg={variant.color} style={{ margin: "15px" }}>
-                            {variant.count} - {variant.label}
-                        </Badge>
-                    ))}
-                </div>
+                    <div style={styles.severityContainer}>
+                        {severity.map((variant) => (
+                            <Badge key={variant.color} bg={variant.color} style={{ margin: "15px" }}>
+                                {variant.count} - {variant.label}
+                            </Badge>
+                        ))}
+                    </div>
 
-                <p style={styles.titleContainer}>
-                    Vulnerabilities Descriptions
-                </p>
-                <Table style={styles.styleTable}>
-                    <thead style={{ textAlign: "center" }}>
-                        <tr>
-                            <th id="title">Title</th>
-                            <th id="severity">Severity</th>
-                            <th id="problem">Recommendation</th>
-                        </tr>
-                    </thead>
-                    <tbody style={{ textAlign: "center" }}>
-                        {notes.map((note, index) => {
-                            let color = note.impact === "High" ? '#feb9b9' :
-                                note.impact === "Medium" ? '#ffcc80' :
-                                    note.impact === "Minor" ? '#90caf9' :
-                                        note.impact === 'Informational' ? '#d0fefe' : '#d8dcd6';
-                            return (
-                                <tr key={index} style={{ backgroundColor: color }}>
-                                    <td><Button style={{ fontWeight: 'bolder' }} variant="text" onClick={() => severityFoundAt(note.id)}>{note.check}</Button></td>
-                                    <td><Button style={{ fontWeight: 'bolder' }} variant="text" onClick={() => severityDetails(note.id)}>{note.impact}</Button></td>
-                                    <td><Button variant="text" onClick={() => solution(note.check)}><FontAwesomeIcon icon={faCircleInfo} /></Button></td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </Table>
-            </div>
-            <Tour
-                steps={steps}
-                isOpen={isTourOpen}
-                onRequestClose={() => setIsTourOpen(false)}
-            />
-        </div >
-    )
+                    <p style={styles.titleContainer}>
+                        Vulnerabilities Descriptions
+                    </p>
+                    <Table style={styles.styleTable}>
+                        <thead style={{ textAlign: "center" }}>
+                            <tr>
+                                <th id="title">Title</th>
+                                <th id="severity">Severity</th>
+                                <th id="problem">Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody style={{ textAlign: "center" }}>
+                            {notes.map((note, index) => {
+                                let color = note.impact === "High" ? '#feb9b9' :
+                                    note.impact === "Medium" ? '#ffcc80' :
+                                        note.impact === "Minor" ? '#90caf9' :
+                                            note.impact === 'Informational' ? '#d0fefe' : '#d8dcd6';
+                                return (
+                                    <tr key={index} style={{ backgroundColor: color }}>
+                                        <td><Button style={{ fontWeight: 'bolder' }} variant="text" onClick={() => severityFoundAt(note.id)}>{note.check}</Button></td>
+                                        <td><Button style={{ fontWeight: 'bolder' }} variant="text" onClick={() => severityDetails(note.id)}>{note.impact}</Button></td>
+                                        <td><Button variant="text" onClick={() => solution(note.check)}><FontAwesomeIcon icon={faCircleInfo} /></Button></td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </Table>
+                </div>
+                <Tour
+                    steps={steps}
+                    isOpen={isTourOpen}
+                    onRequestClose={() => setIsTourOpen(false)}
+                />
+            </div >
+        )
+    }
+    else
+    {
+        return (
+            <div id="reportNow">
+                <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
+                <div style={styles.screenContent}>
+                    <div style={styles.centerContent}>
+                        <Button variant="text" onClick={handlePrint} disabled={true}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
+                        <div className="ms-2 me-auto">
+                            <div>
+                                <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
+                                    <p>Date Audited: </p>
+                                    <p><b>00 Dec 0000</b></p>
+                                    <p>Vulnerability:</p>
+                                    <p><b>Pull Vulnerability</b></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ marginRight: "75px", width: 130 }}>
+                            <div id="percentage">
+                                <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                            </div>
+                            <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
+                        </div>
+                    </div>
+
+                    <div style={styles.severityContainer}>
+                        {severity.map((variant) => (
+                            <Badge key={variant.color} bg={variant.color} style={{ margin: "15px" }}>
+                                {variant.count} - {variant.label}
+                            </Badge>
+                        ))}
+                    </div>
+
+                    <p style={styles.titleContainer}>
+                        Vulnerabilities Descriptions
+                    </p>
+                    <Table style={styles.styleTable}>
+                        <thead style={{ textAlign: "center" }}>
+                            <tr>
+                                <th id="title">Title</th>
+                                <th id="severity">Severity</th>
+                                <th id="problem">Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody style={{ textAlign: "center" }}>
+                            {notes.map((note, index) => {
+                                return (
+                                    <tr key={index} style={{ backgroundColor: '#abf7b1' }}>
+                                        <td><b>NONE</b></td>
+                                        <td><b>NONE</b></td>
+                                        <td><b>NONE</b></td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </Table>
+                </div>
+                <Tour
+                    steps={steps}
+                    isOpen={isTourOpen}
+                    onRequestClose={() => setIsTourOpen(false)}
+                />
+            </div >
+        )
+    }
 }
 
 const steps = [
@@ -243,7 +317,7 @@ const steps = [
     },
     {
         selector: "#downloadPDF",
-        content: "Click here to print report",
+        content: "Click here to see/print report documentation",
     },
 ];
 
@@ -341,7 +415,7 @@ const styles = StyleSheet.create({
     },
 
     noteImg: {
-       marginLeft: "55px", width: "5rem", height: "5.2rem"
+        marginLeft: "55px", width: "5rem", height: "5.2rem"
     },
 
     styleTable: {

@@ -1,4 +1,4 @@
-import logo from '../images/ASCA_logo.png';
+import logo from '../images/XContractLogo.png';
 import React from "react";
 
 function Welcome() {
@@ -7,7 +7,7 @@ function Welcome() {
 
     return (
         <div style={{display: "contents"}}>
-          <img id="heading" src={logo} className="page_logo" alt="logo" />
+          <img id="heading" src={logo} className="page_logo" alt="logo" style={{height:"16rem", width: "16rem"}} />
         </div>
     )
 }
