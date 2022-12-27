@@ -24,6 +24,7 @@ function Navigation() {
   
   const [ isLogout, setIsLogout] = useState(false);
   var Alert_position_style = {
+    display: "block",
     transitionDuration: "1s",
     position: "fixed",
     bottom: "15px",
@@ -31,9 +32,11 @@ function Navigation() {
   }
   function showAlert () {
     document.getElementById("logoutAlert").classList.add("show")
+    document.getElementById("logoutAlert").style.display = "block"
   }
   function hideAlert () {
     document.getElementById("logoutAlert").classList.remove("show")
+    document.getElementById("logoutAlert").style.display = "none"
   }
   useEffect(() => {
     if (isLogout === true) {
@@ -68,11 +71,6 @@ function Navigation() {
               icon={faUser}
               onClick={() => {setModalShow(true); setIsFirstRender(false)}}
             />
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
           </Nav.Link>
         </Nav.Item>
       </Nav>
