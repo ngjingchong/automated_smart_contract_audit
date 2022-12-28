@@ -115,6 +115,10 @@ const VulnerabilityPicker = ({ detectorSelected, set_scan_vulnerability }) => {
     {
       selector: ".vulnerability_details_container header .action button",
       content: "Click the button to start scanning the smart contract",
+    },
+    {
+      selector:".vulnerability_details_container header .action .like",
+      content: "Click like button to save this attack"
     }
   ];
   
