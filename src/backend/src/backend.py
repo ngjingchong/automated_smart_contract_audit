@@ -113,7 +113,7 @@ def matrix_mapping (matrix):
 
 @api.route('/file')
 def display_file():
-  dir_path = r"\automated_smart_contract_audit\src\backend\contracts"
+  dir_path = r"\automated_smart_contract_audit\src\backend\src\contracts"
   res = os.listdir(dir_path)
   return res
   fp.close()
