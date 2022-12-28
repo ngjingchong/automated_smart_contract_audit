@@ -163,10 +163,11 @@ const ReportResult = () => {
     if (notes.length > 0) {
         return (
             <div id="reportNow">
+                <Header />
                 <div style={styles.screenContent}>
                     <div style={styles.centerContent}>
                         <Button variant="text" onClick={handlePrint}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
-                        <div style={{marginTop: 70}} className="ms-2 me-auto">
+                        <div style={{ marginTop: 70 }} className="ms-2 me-auto">
                             <h3>Final Results</h3>
                         </div>
                         <div style={{ marginRight: "75px", width: 130 }}>
@@ -218,15 +219,14 @@ const ReportResult = () => {
                     isOpen={isTourOpen}
                     onRequestClose={() => setIsTourOpen(false)}
                 />
-            <Button style={styles.tourGuideButton} onClick={() => setIsTourOpen(true)}>Tour Guide</Button>
+                <Button style={styles.tourGuideButton} onClick={() => setIsTourOpen(true)}>Tour Guide</Button>
             </div >
         )
     }
     else {
         return (
             <div id="reportNow">
-                {console.log("hi")}
-                <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
+                <Header />
                 <div style={styles.screenContent}>
                     <div style={styles.centerContent}>
                         <div style={{ marginRight: "75px", width: 130 }}>
@@ -270,6 +270,7 @@ const ReportResult = () => {
                     isOpen={isTourOpen}
                     onRequestClose={() => setIsTourOpen(false)}
                 />
+                <Button style={styles.tourGuideButton} onClick={() => setIsTourOpen(true)}>Tour Guide</Button>
             </div >
         )
     }
@@ -388,7 +389,7 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
+        marginTop: "9rem", position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
     },
 
     noteImg: {
@@ -407,8 +408,8 @@ const styles = StyleSheet.create({
         marginBottom: "5px", marginTop: "10px", fontWeight: "bold", textAlign: "center", fontSize: "18px"
     },
 
-    tourGuideButton:{
-        fontWeight:"bold", backgroundColor:"#78909c", bottom: 0, margin:20, position: "fixed", right:20,  borderRadius: "50%", height:90, width:90 
+    tourGuideButton: {
+        fontWeight: "bold", backgroundColor: "#78909c", bottom: 0, margin: 20, position: "fixed", right: 20, borderRadius: "50%", height: 90, width: 90
     }
 });
 

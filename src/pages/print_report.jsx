@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { useLocation } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
 import Button from 'react-bootstrap/Button';
+import Header from "./header";
 
 const PrintReport = () => {
 
@@ -29,9 +30,9 @@ const PrintReport = () => {
 
     return (
         <>
+            <Header />
             <div style={styles.screenContent}>
                 <div style={styles.centerContent}>
-
                     <div ref={componentRef}>
                         <div style={{ textDecoration: "underline", marginLeft: "30px", marginTop: "100px" }}>
                             <h3>{fileName.replace('contracts/', '')} Report</h3>
@@ -70,7 +71,7 @@ const PrintReport = () => {
                     </div>
                 </div>
             </div >
-            <Button variant="primary" onClick={handlePrint} style={{ bottom: 0, margin:20, width: 150, position: "fixed", right:0 }}>Print Report Out!</Button>
+            <Button variant="primary" onClick={handlePrint} style={{ bottom: 0, margin: 20, width: 150, position: "fixed", right: 0 }}>Print Report Out!</Button>
         </>
     )
 }
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        position: 'absolute', left: '50%', marginTop: "100%", transform: 'translate(-50%, -50%)', padding: "9px",
+        position: 'absolute', left: '50%', marginTop: "105%", transform: 'translate(-50%, -50%)', padding: "9px",
     },
 
     card: {

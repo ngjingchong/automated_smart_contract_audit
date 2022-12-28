@@ -11,7 +11,7 @@ function Welcome() {
 
   return (
     <>
-      <div style={styles.centerItem}><Header /></div>
+      <Header />
       <Card id="body" style={styles.screenContainer}>
         <Card.Body style={{ height: '250px' }} >
           <Card.Title>Welcome To XContract Saviour</Card.Title>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     position: 'absolute',
     left: '50%',
-    top: '55%',
+    top: '50%',
     transform: 'translate(-50%, -50%)',
     paddingTop: "30px"
   },
