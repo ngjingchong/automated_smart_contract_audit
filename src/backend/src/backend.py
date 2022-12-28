@@ -131,7 +131,7 @@ def display_report_result():
     req = request.data.decode('UTF-8')
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
-    file_path = r'.\\src\\reports\\' + req3
+    file_path = r'.\\reports\\' + req3
     try:
       with open(file_path, "r+") as fp:
         # reading the contents before writing
