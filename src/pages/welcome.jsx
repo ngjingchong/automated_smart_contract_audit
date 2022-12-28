@@ -12,7 +12,6 @@ function Welcome() {
   return (
     <>
       <div style={styles.centerItem}><Header/></div> 
-      <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
       <Card id="body" style={styles.screenContainer}>
         <Card.Body style={{ height: '250px' }} >
           <Card.Title>Welcome To XContract Saviour</Card.Title>

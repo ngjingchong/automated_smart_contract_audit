@@ -111,19 +111,6 @@ def matrix_mapping (matrix):
   else: #Optimization
     return 0
 
-# contracts = ["Vault.sol", "Reentrancy.sol"] #get name of contracts to be audited in this session
-# for c in contracts:
-#   os.system('cmd /c "slither ./../../../build/contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_'+ c +'.json"')
-@api.route('/upload-contracts', methods=['GET', 'POST'])
-def contract_uploaded():
-  contracts = [{
-    "name": "Nagato",
-    "about" :"Hello! I'm a full stack developer that loves python and javascript"
-  }]
-  if request.method == 'POST':
-    contracts.append(request.files)
-  return contracts
-
 @api.route('/file')
 def display_file():
   dir_path = r"\automated_smart_contract_audit\src\backend\contracts"

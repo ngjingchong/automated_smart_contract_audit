@@ -25,7 +25,7 @@ function AuditReport() {
       <h5 style={{color: "#19A81F"}}>
         Smart Contract Audit Report is Ready !
         <br /> 
-        <a href="scan_and_view_content">Click Here</a>
+        <a href="report_result">Click Here</a>
       </h5>
     </div>
   )
