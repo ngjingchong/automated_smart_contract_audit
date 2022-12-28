@@ -113,14 +113,14 @@ def matrix_mapping (matrix):
 
 @api.route('/file')
 def display_file():
-  dir_path = r"\automated_smart_contract_audit\src\backend\src\contracts"
+  dir_path = r"C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\contracts"
   res = os.listdir(dir_path)
   return res
   fp.close()
 
 @api.route('/report')
 def display_report():
-  dir_path = r"\automated_smart_contract_audit\src\backend\src\reports"
+  dir_path = r"C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\reports"
   res = os.listdir(dir_path)
   return res
   fp.close()
