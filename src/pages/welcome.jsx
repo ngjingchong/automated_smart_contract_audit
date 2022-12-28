@@ -11,14 +11,14 @@ function Welcome() {
 
   return (
     <>
-      <div style={{ marginLeft: "33rem" }} > <Header /> </div>
+      <div style={styles.centerItem}><Header/></div> 
       <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
       <Card id="body" style={styles.screenContainer}>
         <Card.Body style={{ height: '250px' }} >
-          <Card.Title>Welcome To Tool "Name" </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted" style={{ lineHeight: 2.5 }} >Detect Smart Contracts Vulnerabilities Here</Card.Subtitle>
-          <Card.Text>
-            Curabitur faucibus pellentesque ipsum at volutpat. Pellentesque nec fringilla lacus, nec blandit orci. Morbi ultricies interdum gravida. Aliquam ligula ante, rutrum a justo vel
+          <Card.Title>Welcome To XContract Saviour</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted" style={{ lineHeight: 2.5 }}>Fix Your Smart Contract Here!</Card.Subtitle>
+          <Card.Text style={{lineHeight:"35px"}}>
+           <b>XContract Saviour Tool may assist you in detecting vulnerabilities in your Smart Contract! <p>We are here to save you from losing millions of dollars.</p></b>
           </Card.Text>
           <Card.Link id="button" style={{ marginTop: '15px' }} href="scan_and_view_content" className="btn btn-primary">Lets Get Started</Card.Link>
         </Card.Body>
@@ -35,15 +35,15 @@ function Welcome() {
 const steps = [
   {
     selector: "#heading",
-    content: "This is my first step",
+    content: "Welcome to XContract Saviour!",
   },
   {
     selector: "#body",
-    content: "This is my second step",
+    content: "You are currently on our Home Page.",
   },
   {
     selector: "#button",
-    content: "This is my third step",
+    content: "Click this button to start scanning your Smart Contract!",
   },
 ];
 
@@ -53,9 +53,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     position: 'absolute',
     left: '50%',
-    top: '50%',
+    top: '55%',
     transform: 'translate(-50%, -50%)',
     paddingTop: "30px"
+  },
+  centerItem: {
+    position: "absolute",
+    top: "0%",
+    left: "50%",
+    marginLeft: "-120px" 
   }
 });
 

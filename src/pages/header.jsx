@@ -1,4 +1,4 @@
-import logo from '../images/ASCA_logo.png';
+import logo from '../images/XContractLogo.png';
 import React from "react";
 import Nav from './nav';
 

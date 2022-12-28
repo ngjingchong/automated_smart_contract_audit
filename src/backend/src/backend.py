@@ -111,22 +111,69 @@ def matrix_mapping (matrix):
   else: #Optimization
     return 0
 
-@api.route('/data')
+# contracts = ["Vault.sol", "Reentrancy.sol"] #get name of contracts to be audited in this session
+# for c in contracts:
+#   os.system('cmd /c "slither ./../../../build/contracts/' + c + ' --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./src/reports/report_'+ c +'.json"')
+@api.route('/upload-contracts', methods=['GET', 'POST'])
+def contract_uploaded():
+  contracts = [{
+    "name": "Nagato",
+    "about" :"Hello! I'm a full stack developer that loves python and javascript"
+  }]
+  if request.method == 'POST':
+    contracts.append(request.files)
+  return contracts
+
+@api.route('/file')
+def display_file():
+  dir_path = r"\automated_smart_contract_audit\src\backend\contracts"
+  res = os.listdir(dir_path)
+  return res
+  fp.close()
+
+@api.route('/report')
 def display_report():
-  
-  file_path = r'.\src\reports\report_Reentrancy.sol.json'    
-  try:
-    with open(file_path, "r+") as fp:
-      # reading the contents before writing
-      return (json.loads(fp.read()))
-      fp.close()
-  except FileNotFoundError:
-    print("Please check the path.")
+  dir_path = r"\automated_smart_contract_audit\src\backend\src\reports"
+  res = os.listdir(dir_path)
+  return res
+  fp.close()
 
+@api.route('/data', methods=['POST', 'GET'])
+def display_report_result():
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    file_path = r'.\\src\\reports\\' + req3
+    try:
+      with open(file_path, "r+") as fp:
+        # reading the contents before writing
+        return (json.loads(fp.read()))
+        fp.close()
+    except FileNotFoundError:
+      print("Please check the path.")
+  return file_path
 
-  # with open('../reports/report_Reentrancy.sol.json') as result:
-  #   report = json.load(result)
-  #   print(report)
+@api.route('/deleteContract', methods=['POST', 'GET'])
+def delete_contract():
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    print(req)
+    file_path = r'\automated_smart_contract_audit\src\backend\contracts\\' + req3
+    res = os.remove(file_path)
+  return file_path
+
+@api.route('/deleteReport', methods=['POST', 'GET'])
+def delete_report():
+  if request.method == 'POST':
+    req = request.data.decode('UTF-8')
+    req2 = req.replace('["','')
+    req3 = req2.replace('"]','')
+    print(req)
+    file_path = r'.\\src\\reports\\' + req3
+    res = os.remove(file_path)
   return file_path
 
 if __name__ == "__main__":

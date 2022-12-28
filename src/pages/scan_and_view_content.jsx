@@ -1,11 +1,10 @@
-import logo from './../logo.svg';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import ListOfContract from './list_of_contract';
 import ListOfReport from './list_of_report';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 function ScanAndViewContent() {
   return (
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     width: '550px', 
     position: 'absolute',
     left: '50%',
-    top: '16rem',
+    top: '50%',
     transform: 'translate(-50%, -50%)',
   }
 });

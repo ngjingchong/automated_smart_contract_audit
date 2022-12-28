@@ -11,9 +11,9 @@
             "source_mapping": {
               "start": 442,
               "length": 268,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 15,
@@ -34,9 +34,9 @@
                 "source_mapping": {
                   "start": 267,
                   "length": 617,
-                  "filename_relative": "src/contracts/Reentrancy.sol",
-                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                  "filename_short": "src/contracts/Reentrancy.sol",
+                  "filename_relative": "contracts/Reentrancy.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                  "filename_short": "contracts/Reentrancy.sol",
                   "is_dependency": false,
                   "lines": [
                     8,
@@ -73,9 +73,9 @@
             "source_mapping": {
               "start": 562,
               "length": 54,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 18
@@ -90,9 +90,9 @@
                 "source_mapping": {
                   "start": 442,
                   "length": 268,
-                  "filename_relative": "src/contracts/Reentrancy.sol",
-                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                  "filename_short": "src/contracts/Reentrancy.sol",
+                  "filename_relative": "contracts/Reentrancy.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                  "filename_short": "contracts/Reentrancy.sol",
                   "is_dependency": false,
                   "lines": [
                     15,
@@ -113,9 +113,9 @@
                     "source_mapping": {
                       "start": 267,
                       "length": 617,
-                      "filename_relative": "src/contracts/Reentrancy.sol",
-                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                      "filename_short": "src/contracts/Reentrancy.sol",
+                      "filename_relative": "contracts/Reentrancy.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                      "filename_short": "contracts/Reentrancy.sol",
                       "is_dependency": false,
                       "lines": [
                         8,
@@ -157,9 +157,9 @@
             "source_mapping": {
               "start": 678,
               "length": 24,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 20
@@ -174,9 +174,9 @@
                 "source_mapping": {
                   "start": 442,
                   "length": 268,
-                  "filename_relative": "src/contracts/Reentrancy.sol",
-                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                  "filename_short": "src/contracts/Reentrancy.sol",
+                  "filename_relative": "contracts/Reentrancy.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                  "filename_short": "contracts/Reentrancy.sol",
                   "is_dependency": false,
                   "lines": [
                     15,
@@ -197,9 +197,9 @@
                     "source_mapping": {
                       "start": 267,
                       "length": 617,
-                      "filename_relative": "src/contracts/Reentrancy.sol",
-                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                      "filename_short": "src/contracts/Reentrancy.sol",
+                      "filename_relative": "contracts/Reentrancy.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                      "filename_short": "contracts/Reentrancy.sol",
                       "is_dependency": false,
                       "lines": [
                         8,
@@ -237,10 +237,10 @@
             }
           }
         ],
-        "description": "Reentrancy in EtherStore.withdraw() (src/contracts/Reentrancy.sol#15-21):\n\tExternal calls:\n\t- (success) = msg.sender.call{value: balance}() (src/contracts/Reentrancy.sol#18)\n\tState variables written after the call(s):\n\t- balances[msg.sender] = 0 (src/contracts/Reentrancy.sol#20)\n",
-        "markdown": "Reentrancy in [EtherStore.withdraw()](src/contracts/Reentrancy.sol#L15-L21):\n\tExternal calls:\n\t- [(success) = msg.sender.call{value: balance}()](src/contracts/Reentrancy.sol#L18)\n\tState variables written after the call(s):\n\t- [balances[msg.sender] = 0](src/contracts/Reentrancy.sol#L20)\n",
-        "first_markdown_element": "src/contracts/Reentrancy.sol#L15-L21",
-        "id": "d1b493d184304670d86d5f7d9ada82c010167ebfac16ccd3e9d9994f2145cf0b",
+        "description": "Reentrancy in EtherStore.withdraw() (contracts/Reentrancy.sol#15-21):\n\tExternal calls:\n\t- (success) = msg.sender.call{value: balance}() (contracts/Reentrancy.sol#18)\n\tState variables written after the call(s):\n\t- balances[msg.sender] = 0 (contracts/Reentrancy.sol#20)\n",
+        "markdown": "Reentrancy in [EtherStore.withdraw()](contracts/Reentrancy.sol#L15-L21):\n\tExternal calls:\n\t- [(success) = msg.sender.call{value: balance}()](contracts/Reentrancy.sol#L18)\n\tState variables written after the call(s):\n\t- [balances[msg.sender] = 0](contracts/Reentrancy.sol#L20)\n",
+        "first_markdown_element": "contracts/Reentrancy.sol#L15-L21",
+        "id": "50d9a83b9523abc658446a7091727afc2bc63b20fcf3073e06c82b5c638ab899",
         "check": "reentrancy-eth",
         "impact": "High",
         "confidence": "Medium"
@@ -263,9 +263,9 @@
             "source_mapping": {
               "start": 33,
               "length": 23,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 2
@@ -283,10 +283,10 @@
             }
           }
         ],
-        "description": "Pragma version^0.8.0 (src/contracts/Reentrancy.sol#2) allows old versions\n",
-        "markdown": "Pragma version[^0.8.0](src/contracts/Reentrancy.sol#L2) allows old versions\n",
-        "first_markdown_element": "src/contracts/Reentrancy.sol#L2",
-        "id": "eea938acc2dc3e133ca9e6b3c75dfe27d6ace43963dd5b57e104acb1449d3a29",
+        "description": "Pragma version^0.8.0 (contracts/Reentrancy.sol#2) allows old versions\n",
+        "markdown": "Pragma version[^0.8.0](contracts/Reentrancy.sol#L2) allows old versions\n",
+        "first_markdown_element": "contracts/Reentrancy.sol#L2",
+        "id": "7cbb33f91f1e9e5b0d2b9687e4df30a89237445a23139b045090acbfe40e6100",
         "check": "solc-version",
         "impact": "Informational",
         "confidence": "High"
@@ -299,9 +299,9 @@
             "source_mapping": {
               "start": 442,
               "length": 268,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 15,
@@ -322,9 +322,9 @@
                 "source_mapping": {
                   "start": 267,
                   "length": 617,
-                  "filename_relative": "src/contracts/Reentrancy.sol",
-                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                  "filename_short": "src/contracts/Reentrancy.sol",
+                  "filename_relative": "contracts/Reentrancy.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                  "filename_short": "contracts/Reentrancy.sol",
                   "is_dependency": false,
                   "lines": [
                     8,
@@ -361,9 +361,9 @@
             "source_mapping": {
               "start": 562,
               "length": 54,
-              "filename_relative": "src/contracts/Reentrancy.sol",
-              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-              "filename_short": "src/contracts/Reentrancy.sol",
+              "filename_relative": "contracts/Reentrancy.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+              "filename_short": "contracts/Reentrancy.sol",
               "is_dependency": false,
               "lines": [
                 18
@@ -378,9 +378,9 @@
                 "source_mapping": {
                   "start": 442,
                   "length": 268,
-                  "filename_relative": "src/contracts/Reentrancy.sol",
-                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                  "filename_short": "src/contracts/Reentrancy.sol",
+                  "filename_relative": "contracts/Reentrancy.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                  "filename_short": "contracts/Reentrancy.sol",
                   "is_dependency": false,
                   "lines": [
                     15,
@@ -401,9 +401,9 @@
                     "source_mapping": {
                       "start": 267,
                       "length": 617,
-                      "filename_relative": "src/contracts/Reentrancy.sol",
-                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\Reentrancy.sol",
-                      "filename_short": "src/contracts/Reentrancy.sol",
+                      "filename_relative": "contracts/Reentrancy.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\contracts\\Reentrancy.sol",
+                      "filename_short": "contracts/Reentrancy.sol",
                       "is_dependency": false,
                       "lines": [
                         8,
@@ -437,10 +437,10 @@
             }
           }
         ],
-        "description": "Low level call in EtherStore.withdraw() (src/contracts/Reentrancy.sol#15-21):\n\t- (success) = msg.sender.call{value: balance}() (src/contracts/Reentrancy.sol#18)\n",
-        "markdown": "Low level call in [EtherStore.withdraw()](src/contracts/Reentrancy.sol#L15-L21):\n\t- [(success) = msg.sender.call{value: balance}()](src/contracts/Reentrancy.sol#L18)\n",
-        "first_markdown_element": "src/contracts/Reentrancy.sol#L15-L21",
-        "id": "0acfecff084b379a13c9c488c29891e7975b609d3b793ae8b063e651c0f0f683",
+        "description": "Low level call in EtherStore.withdraw() (contracts/Reentrancy.sol#15-21):\n\t- (success) = msg.sender.call{value: balance}() (contracts/Reentrancy.sol#18)\n",
+        "markdown": "Low level call in [EtherStore.withdraw()](contracts/Reentrancy.sol#L15-L21):\n\t- [(success) = msg.sender.call{value: balance}()](contracts/Reentrancy.sol#L18)\n",
+        "first_markdown_element": "contracts/Reentrancy.sol#L15-L21",
+        "id": "d20a4fc3ea7ccf7f262f7cd28cdea5ec59e3ac2a0611c681a875afd5de85cca8",
         "check": "low-level-calls",
         "impact": "Informational",
         "confidence": "High"
