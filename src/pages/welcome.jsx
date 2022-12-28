@@ -11,7 +11,7 @@ function Welcome() {
 
   return (
     <>
-      <div style={styles.centerItem}><Header/></div> 
+      <div><Header/></div> 
       <Card id="body" style={styles.screenContainer}>
         <Card.Body style={{ height: '250px' }} >
           <Card.Title>Welcome To XContract Saviour</Card.Title>
@@ -19,7 +19,7 @@ function Welcome() {
           <Card.Text style={{lineHeight:"35px"}}>
            <b>XContract Saviour Tool may assist you in detecting vulnerabilities in your Smart Contract! <p>We are here to save you from losing millions of dollars.</p></b>
           </Card.Text>
-          <Card.Link id="button" style={{ marginTop: '15px' }} href="scan_and_view_content" className="btn btn-primary">Lets Get Started</Card.Link>
+          <Card.Link id="button" style={{ marginTop: '15px' }} href="audit_process" className="btn btn-primary">Lets Get Started</Card.Link>
         </Card.Body>
       </Card>
       <Tour
@@ -55,12 +55,6 @@ const styles = StyleSheet.create({
     top: '55%',
     transform: 'translate(-50%, -50%)',
     paddingTop: "30px"
-  },
-  centerItem: {
-    position: "absolute",
-    top: "0%",
-    left: "50%",
-    marginLeft: "-120px" 
   }
 });
 

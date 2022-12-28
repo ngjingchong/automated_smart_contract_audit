@@ -60,7 +60,7 @@ function Navigation() {
     <>
       <Nav style={nav_style} variant="pills" activeKey={window.location.pathname}>
         <Nav.Item>
-          <Nav.Link href="/" >Tour Guide</Nav.Link>
+          <Nav.Link href="#" >Tour Guide</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/audit_process">Start Scanning</Nav.Link>
