@@ -50,7 +50,7 @@ function Audit_Process() {
 
         formData.append("detector", detectorSelected.id)
         // post contracts via the API for processing
-        axios.post('/scan_vulnerabilities', formData)
+        axios.post('http://127.0.0.1:5000/scan_vulnerabilities', formData)
         .then((res) => {
           console.log(res.data)
         })

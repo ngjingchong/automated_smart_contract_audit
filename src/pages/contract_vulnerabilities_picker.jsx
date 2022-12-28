@@ -20,7 +20,7 @@ const VulnerabilityPicker = ({detectorSelected, set_scan_vulnerability}) => {
 
   // due to asyn traits, the detectors is not stored persistently
   const getDetectors = () => {
-    axios.get('/detectors')
+    axios.get('http://127.0.0.1:5000/detectors')
     .then((res) => {
       // console.log(res.data)
       setDetectors(res.data)
