@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 
 function ScanAndViewContent() {
   return (
-    <div style={styles.listContainer}>
+    <div>
       <Tabs fill>
         <Tab eventKey="contract" title="Contract">
           <ListOfContract/>
@@ -21,14 +21,5 @@ function ScanAndViewContent() {
     )
 }
 
-const styles = StyleSheet.create({
-  listContainer: {
-    width: '550px', 
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-  }
-});
 
 export default ScanAndViewContent

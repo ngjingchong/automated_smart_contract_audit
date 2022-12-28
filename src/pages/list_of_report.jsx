@@ -2,8 +2,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import React, { useState, useEffect } from 'react';
 import noteLogo from '../images/note.png';
 import { StyleSheet } from 'react-native';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Tour from 'reactour'
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +13,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 function ListOfReport() {
 
   const [reports, setReports] = useState([])
+  const [isTourOpen, setIsTourOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,30 +107,55 @@ function ListOfReport() {
   }
   else {
     return (
-      <ListGroup style={styles.listGroup}>
-        {reports.map((report, i) => {
-          return (
-            <ListGroup.Item className="d-flex justify-content-between align-items-center">
-              <img src={noteLogo} className="note_logo" alt="logo" style={{ width: "2.5rem", height: "2.8rem" }} />
-              <div className="ms-2 me-auto">
-                <div className="fw-bold">{report.replace('.sol.json', '')}</div>
-              </div>
-              <ListGroup.Item style={styles.scanButton} key={i} value={report} action onClick={e => handleSubmit(e.target.value)}>
-                Read
+      <div>
+        <ListGroup style={styles.listGroup} id="report">
+          {reports.map((report, i) => {
+            return (
+              <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                <img src={noteLogo} className="note_logo" alt="logo" style={{ width: "2.5rem", height: "2.8rem" }} />
+                <div className="ms-2 me-auto">
+                  <div className="fw-bold">{report.replace('.sol.json', '')}</div>
+                </div>
+                <ListGroup.Item id="read" style={styles.scanButton} key={i} value={report} action onClick={e => handleSubmit(e.target.value)}>
+                  Read
+                </ListGroup.Item>
+                <ListGroup.Item style={{ padding: 0, margin: 15, width: "8px", borderStyle: "none" }} actionkey={i} name={report} onClick={e => deleteFileHandler(report)} >
+                  <FontAwesomeIcon
+                    icon={faTrash} color="#D4D4D4" style={{ fontSize: "1.3rem" }} id="deleteReport"
+                  />
+                </ListGroup.Item>
               </ListGroup.Item>
-              <ListGroup.Item style={{padding: 0, margin: 15, width: "8px", borderStyle:"none"}} actionkey={i} name={report} onClick={e => deleteFileHandler(report)} >
-                <FontAwesomeIcon
-                  icon={faTrash} color="#D4D4D4" style={{fontSize: "1.3rem"}}
-                />
-              </ListGroup.Item>
-            </ListGroup.Item>
-          )
-        })}
-      </ListGroup>
+            )
+          })}
+        </ListGroup>
+        <div style={{ backgroundColor: "white", textAlign: "center" }}>
+          <Link onClick={() => setIsTourOpen(true)} className="btn btn-primary" style={{ width: "10rem", margin: "6px" }}>Tour Guide</Link>
+        </div>
+        <Tour
+          steps={steps}
+          isOpen={isTourOpen}
+          onRequestClose={() => setIsTourOpen(false)}
+        />
+      </div>
     );
   }
 
 }
+
+const steps = [
+  {
+    selector: "#report",
+    content: "Here is the list of reports generated previously.",
+  },
+  {
+    selector: "#read",
+    content: "Click here to read the report.",
+  },
+  {
+    selector: "#deleteReport",
+    content: "Click here to delete the report.",
+  },
+];
 
 const styles = StyleSheet.create({
   scanButton: {
@@ -143,7 +171,7 @@ const styles = StyleSheet.create({
   },
 
   listGroup: {
-    maxHeight: "380px",
+    maxHeight: "210px",
     overflowY: "scroll",
   },
 });

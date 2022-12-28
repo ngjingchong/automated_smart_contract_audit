@@ -12,7 +12,7 @@ const PrintReport = () => {
     const [fileName, setFileName] = useState("");
 
     useEffect(() => {
-        
+
         setNotes(state.results.detectors);
         for (let k = 0; k < notes.length; k++) {
             if (notes[k].elements.length !== 0) {
@@ -28,48 +28,50 @@ const PrintReport = () => {
     });
 
     return (
-        <div style={styles.screenContent}>
-            <div style={styles.centerContent}>
+        <>
+            <div style={styles.screenContent}>
+                <div style={styles.centerContent}>
 
-                <Button variant="primary" onClick={handlePrint} style={{ marginTop: "30px", float: "right" }}>Print this out!</Button>
-                <div ref={componentRef}>
-                    <div style={{ textDecoration:"underline", marginLeft:"30px", marginTop: "100px" }}>
-                        <h3>{fileName.replace('contracts/', '')} Report</h3>
-                    </div>
-                    {notes.map((note) => {
-                        console.log(note)
-                        return (
-                            <div>
-                                <div className="card" style={styles.card}>
-                                    <h3 style={styles.titleText}>{note.check}</h3>
-                                    <p><b>Impact:</b> {note.impact}</p>
-                                    <p><b>Description:</b><br />{note.description.replaceAll('contracts/', '').replaceAll('#', ' line - ')} </p>
-                                    {note.elements.map((element) => {
-                                        return (
-                                            <ul>
-                                                <li>
-                                                    <p><b>Name: </b>{element.name}</p>
-                                                </li>
-                                                <p><b>Type: </b>{element.type}</p>
-                                                <p><b>Line(s): </b></p>
+                    <div ref={componentRef}>
+                        <div style={{ textDecoration: "underline", marginLeft: "30px", marginTop: "100px" }}>
+                            <h3>{fileName.replace('contracts/', '')} Report</h3>
+                        </div>
+                        {notes.map((note) => {
+                            console.log(note)
+                            return (
+                                <div>
+                                    <div className="card" style={styles.card}>
+                                        <h3 style={styles.titleText}>{note.check}</h3>
+                                        <p><b>Impact:</b> {note.impact}</p>
+                                        <p><b>Description:</b><br />{note.description.replaceAll('contracts/', '').replaceAll('#', ' line - ')} </p>
+                                        {note.elements.map((element) => {
+                                            return (
                                                 <ul>
-                                                    {element.source_mapping.lines.map((line) => {
-                                                        return (<li>
-                                                            {line}
-                                                        </li>)
-                                                    })}
+                                                    <li>
+                                                        <p><b>Name: </b>{element.name}</p>
+                                                    </li>
+                                                    <p><b>Type: </b>{element.type}</p>
+                                                    <p><b>Line(s): </b></p>
+                                                    <ul>
+                                                        {element.source_mapping.lines.map((line) => {
+                                                            return (<li>
+                                                                {line}
+                                                            </li>)
+                                                        })}
+                                                    </ul>
                                                 </ul>
-                                            </ul>
-                                        )
-                                    })}
-                                    <p><b>Repair Confidency:</b> {note.confidence}</p>
+                                            )
+                                        })}
+                                        <p><b>Repair Confidency:</b> {note.confidence}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
-        </div >
+            </div >
+            <Button variant="primary" onClick={handlePrint} style={{ bottom: 0, margin:20, width: 150, position: "fixed", right:0 }}>Print Report Out!</Button>
+        </>
     )
 }
 
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        position: 'absolute', left: '50%', marginTop:"100%", transform: 'translate(-50%, -50%)', padding: "9px",
+        position: 'absolute', left: '50%', marginTop: "100%", transform: 'translate(-50%, -50%)', padding: "9px",
     },
 
     card: {

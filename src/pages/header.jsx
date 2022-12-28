@@ -5,7 +5,7 @@ import Nav from './nav';
 function Header() {
     return (
       <div style={{display: "contents"}}>
-        <img src={logo} className="page_logo" alt="logo" />
+        <img src={logo} className="page_logo" alt="logo" id="heading"/>
         <Nav />
       </div>
     )
