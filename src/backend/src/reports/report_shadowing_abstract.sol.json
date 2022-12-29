@@ -1,0 +1,205 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 94,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_abstract.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+              "filename_short": "contracts/shadowing_abstract.sol",
+              "is_dependency": false,
+              "lines": [
+                5
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DerivedContract",
+                "source_mapping": {
+                  "start": 47,
+                  "length": 64,
+                  "filename_relative": "contracts/shadowing_abstract.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+                  "filename_short": "contracts/shadowing_abstract.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 28,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_abstract.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+              "filename_short": "contracts/shadowing_abstract.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BaseContract",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 45,
+                  "filename_relative": "contracts/shadowing_abstract.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+                  "filename_short": "contracts/shadowing_abstract.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "DerivedContract.owner (contracts/shadowing_abstract.sol#5) shadows:\n\t- BaseContract.owner (contracts/shadowing_abstract.sol#2)\n",
+        "markdown": "[DerivedContract.owner](contracts/shadowing_abstract.sol#L5) shadows:\n\t- [BaseContract.owner](contracts/shadowing_abstract.sol#L2)\n",
+        "first_markdown_element": "contracts/shadowing_abstract.sol#L5",
+        "id": "9c5c3fc5091b9ecd6ec271fdbb3036d9d3426cdf9a09d6cc293fd7de9240e4ab",
+        "check": "shadowing-abstract",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is not recommended for deployment\n",
+        "markdown": "solc-0.4.24 is not recommended for deployment\n",
+        "first_markdown_element": "",
+        "id": "4fdaa1943fda7c6196f21cde2a89972a5de2e49314548f4161996d6ef6af4a38",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 94,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_abstract.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+              "filename_short": "contracts/shadowing_abstract.sol",
+              "is_dependency": false,
+              "lines": [
+                5
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DerivedContract",
+                "source_mapping": {
+                  "start": 47,
+                  "length": 64,
+                  "filename_relative": "contracts/shadowing_abstract.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+                  "filename_short": "contracts/shadowing_abstract.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "DerivedContract.owner (contracts/shadowing_abstract.sol#5) should be constant\n",
+        "markdown": "[DerivedContract.owner](contracts/shadowing_abstract.sol#L5) should be constant\n",
+        "first_markdown_element": "contracts/shadowing_abstract.sol#L5",
+        "id": "5df24d1a23c56a2e20df822c61ee4dfa9294a380cb0e90256d99dd12033131b6",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 28,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_abstract.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+              "filename_short": "contracts/shadowing_abstract.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BaseContract",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 45,
+                  "filename_relative": "contracts/shadowing_abstract.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_abstract.sol",
+                  "filename_short": "contracts/shadowing_abstract.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "BaseContract.owner (contracts/shadowing_abstract.sol#2) should be constant\n",
+        "markdown": "[BaseContract.owner](contracts/shadowing_abstract.sol#L2) should be constant\n",
+        "first_markdown_element": "contracts/shadowing_abstract.sol#L2",
+        "id": "8397663a155c23e5c7c2edc13d34a84f80ea64df2643120f0dd0246799782367",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

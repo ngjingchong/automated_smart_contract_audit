@@ -20,28 +20,21 @@ function Audit_Process() {
   const [percent, setPercent] = useState(0)
   const prevContractsRev = useRef(contracts)  
   const navigate = useNavigate();
-  var fileList_component = <></>
 
   const setContractsHandler = (new_contracts) => {
     const new_contracts_list = prevContractsRev.current.concat(new_contracts)
     setContracts(new_contracts_list)
   }
-  const removeFile = (filename) => {
-    setContracts(contracts.filter(f => f.name !== filename))
+  const removeFile = (files) => {
+    console.log(files)
+    setContracts(files)
+    prevContractsRev.current = files
   }
 
-  //delete file
-  const deleteFileHandler = (_index) => {
-    // console.log(_index)
-    // console.log(contracts)
-    // acceptedFiles.splice(_index, 1)
-  }
 
   useEffect(() => {
     document.getElementById("logoutAlert").style.display = "none"
     prevContractsRev.current = contracts
-    fileList_component = fileList()
-    console.log(fileList_component)
   },[contracts])
 
   useEffect(() => { // run when user picked an detector to scan against their smart contracts
@@ -96,42 +89,28 @@ function Audit_Process() {
   }
 
   const redirectHandler = () => {
-    if (prevContractsRev.current.length === 1){
-      const data = "report_" + prevContractsRev.current[0].path + ".json"
-      // console.log(data)
-      navigate('../report_result', { state: data });
-    } else {
+    // if (prevContractsRev.current.length === 1){
+    //   const path = "report_" + prevContractsRev.current[0].name + ".json"
+    //   axios(
+    //     {
+    //       url: 'http://127.0.0.1:5000/data',
+    //       method: 'POST',
+    //       data: [path]
+    //     })
+    //     .then((response) => {
+    //       console.log(response)
+    //       navigate('../report_result', { state: response.data });
+    //       if (response.data.results && Object.entries(response.data.results).length !== 0) {
+    //       }
+    //     })
+    // } else {
       navigate('../scan_and_view_content');
-    }
+    // }
     // console.log(prevContractsRev)
   }
 
-  const passContracts = (a) => {
-    return a
-  }
-  const fileList = () => {
-    if (contracts.length > 0){
-      // console.log(contracts)
-      return (
-        <aside>
-          <p>Files Uploaded</p>
-          <ul>
-            {
-              contracts &&
-              contracts.map(f => (<FileItem
-                key={f.name}
-                file={f}
-                deleteFile={deleteFileHandler} />))
-            }
-          </ul>
-        </aside>
-      )
-    } else {
-      // console.log(contracts)
-      return (
-        <></>
-      )
-    }
+  const passContracts = () => {
+    return prevContractsRev.current
   }
 
   return (
@@ -147,8 +126,7 @@ function Audit_Process() {
               content: 
                 <>
                   <ContractUploader setContractsHandler={setContractsHandler} />
-                  {/* {fileList_component} */}
-                  {/* <FileList contracts={prevContractsRev.current} removeFile={removeFile} getContracts={passContracts}/> */}
+                  <FileList removeFile={removeFile} getContracts={passContracts}/>
                 </>,
               validator: () => step1Validator(prevContractsRev.current)
             },

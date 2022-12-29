@@ -1,0 +1,533 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "now",
+            "source_mapping": {
+              "start": 46,
+              "length": 8,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 13
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "get_next_expiration",
+            "source_mapping": {
+              "start": 215,
+              "length": 147,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "get_next_expiration(uint256)"
+            }
+          }
+        ],
+        "description": "Bug.now (contracts/shadowing_builtin_symbol.sol#3) is never initialized. It is used in:\n\t- Bug.get_next_expiration(uint256) (contracts/shadowing_builtin_symbol.sol#7-9)\n",
+        "markdown": "[Bug.now](contracts/shadowing_builtin_symbol.sol#L3) is never initialized. It is used in:\n\t- [Bug.get_next_expiration(uint256)](contracts/shadowing_builtin_symbol.sol#L7-L9)\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L3",
+        "id": "1d71887ce1718db97a4c3d4fd23535cb628849693603654868aa2fe721284303",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "now",
+            "source_mapping": {
+              "start": 46,
+              "length": 8,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 13
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Bug.now (contracts/shadowing_builtin_symbol.sol#3) (state variable) shadows built-in symbol\"\n",
+        "markdown": "[Bug.now](contracts/shadowing_builtin_symbol.sol#L3) (state variable) shadows built-in symbol\"\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L3",
+        "id": "72c16b3d1b11cd1b70aa6173d59ca1f752637b1b7483450f8c9818a4138d46ab",
+        "check": "shadowing-builtin",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "assert",
+            "source_mapping": {
+              "start": 96,
+              "length": 113,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                4,
+                5,
+                6
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "assert(bool)"
+            }
+          }
+        ],
+        "description": "Bug.assert(bool) (contracts/shadowing_builtin_symbol.sol#4-6) (function) shadows built-in symbol\"\n",
+        "markdown": "[Bug.assert(bool)](contracts/shadowing_builtin_symbol.sol#L4-L6) (function) shadows built-in symbol\"\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L4-L6",
+        "id": "cd98f639862fb908684d851af7625736b62ebdaf1642239e7e7bd58c87686e81",
+        "check": "shadowing-builtin",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "get_next_expiration",
+            "source_mapping": {
+              "start": 215,
+              "length": 147,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "get_next_expiration(uint256)"
+            }
+          }
+        ],
+        "description": "Bug.get_next_expiration(uint256) (contracts/shadowing_builtin_symbol.sol#7-9) is never used and should be removed\n",
+        "markdown": "[Bug.get_next_expiration(uint256)](contracts/shadowing_builtin_symbol.sol#L7-L9) is never used and should be removed\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L7-L9",
+        "id": "9f7f10333c8fc816a5cd394f918db5fce63efeedec4491896d7c5b32dfdeb04d",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is not recommended for deployment\n",
+        "markdown": "solc-0.4.24 is not recommended for deployment\n",
+        "first_markdown_element": "",
+        "id": "4fdaa1943fda7c6196f21cde2a89972a5de2e49314548f4161996d6ef6af4a38",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.24",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".24"
+              ]
+            }
+          }
+        ],
+        "description": "Pragma version^0.4.24 (contracts/shadowing_builtin_symbol.sol#1) allows old versions\n",
+        "markdown": "Pragma version[^0.4.24](contracts/shadowing_builtin_symbol.sol#L1) allows old versions\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L1",
+        "id": "de7c6e9cbe020f05557a032d2084980f1a0964121069c31e020c3339cf566a43",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "earlier_time",
+            "source_mapping": {
+              "start": 244,
+              "length": 17,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                7
+              ],
+              "starting_column": 34,
+              "ending_column": 51
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "get_next_expiration",
+                "source_mapping": {
+                  "start": 215,
+                  "length": 147,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Bug",
+                    "source_mapping": {
+                      "start": 26,
+                      "length": 339,
+                      "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                      "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "get_next_expiration(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Bug.get_next_expiration(uint256).earlier_time (contracts/shadowing_builtin_symbol.sol#7) is not in mixedCase\n",
+        "markdown": "Parameter [Bug.get_next_expiration(uint256).earlier_time](contracts/shadowing_builtin_symbol.sol#L7) is not in mixedCase\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L7",
+        "id": "53635e9f6cf9615a18ee5b189b2e00a18dd142c3a8ba923ed1df3d3ebb99216c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "get_next_expiration",
+            "source_mapping": {
+              "start": 215,
+              "length": 147,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "get_next_expiration(uint256)"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function Bug.get_next_expiration(uint256) (contracts/shadowing_builtin_symbol.sol#7-9) is not in mixedCase\n",
+        "markdown": "Function [Bug.get_next_expiration(uint256)](contracts/shadowing_builtin_symbol.sol#L7-L9) is not in mixedCase\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L7-L9",
+        "id": "aaa81dfc22d5cff839f28fd4bfbc51bd58651a5e4c5169d88ef8ce6134bd2714",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "now",
+            "source_mapping": {
+              "start": 46,
+              "length": 8,
+              "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+              "filename_short": "contracts/shadowing_builtin_symbol.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 13
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 339,
+                  "filename_relative": "contracts/shadowing_builtin_symbol.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_builtin_symbol.sol",
+                  "filename_short": "contracts/shadowing_builtin_symbol.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Bug.now (contracts/shadowing_builtin_symbol.sol#3) should be constant\n",
+        "markdown": "[Bug.now](contracts/shadowing_builtin_symbol.sol#L3) should be constant\n",
+        "first_markdown_element": "contracts/shadowing_builtin_symbol.sol#L3",
+        "id": "48a821d71bce5ae279013facd4bcb54cb32b533bc71c04d311de263d241b2d08",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

@@ -1,0 +1,597 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 91,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                4
+              ],
+              "starting_column": 33,
+              "ending_column": 46
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "sensitive_function",
+                "source_mapping": {
+                  "start": 63,
+                  "length": 113,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Bug",
+                    "source_mapping": {
+                      "start": 26,
+                      "length": 306,
+                      "filename_relative": "contracts/shadowing_local.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                      "filename_short": "contracts/shadowing_local.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "sensitive_function(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 46,
+              "length": 10,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 15
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Bug.sensitive_function(address).owner (contracts/shadowing_local.sol#4) shadows:\n\t- Bug.owner (contracts/shadowing_local.sol#3) (state variable)\n",
+        "markdown": "[Bug.sensitive_function(address).owner](contracts/shadowing_local.sol#L4) shadows:\n\t- [Bug.owner](contracts/shadowing_local.sol#L3) (state variable)\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L4",
+        "id": "081954e0399ce5bbf3b494bcc94f59ee8435d2ac4823ec8510c6276452f0cd69",
+        "check": "shadowing-local",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 240,
+              "length": 26,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                9
+              ],
+              "starting_column": 9,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "alternate_sensitive_function",
+                "source_mapping": {
+                  "start": 182,
+                  "length": 147,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    8,
+                    9,
+                    10,
+                    11,
+                    12
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Bug",
+                    "source_mapping": {
+                      "start": 26,
+                      "length": 306,
+                      "filename_relative": "contracts/shadowing_local.sol",
+                      "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                      "filename_short": "contracts/shadowing_local.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "alternate_sensitive_function()"
+                }
+              }
+            }
+          },
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 46,
+              "length": 10,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 15
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Bug.alternate_sensitive_function().owner (contracts/shadowing_local.sol#9) shadows:\n\t- Bug.owner (contracts/shadowing_local.sol#3) (state variable)\n",
+        "markdown": "[Bug.alternate_sensitive_function().owner](contracts/shadowing_local.sol#L9) shadows:\n\t- [Bug.owner](contracts/shadowing_local.sol#L3) (state variable)\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L9",
+        "id": "f2486c8b3bc0e55e209b2ec54d94dfb7be6bea6277acea7ccae3cd76a3ab6513",
+        "check": "shadowing-local",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is not recommended for deployment\n",
+        "markdown": "solc-0.4.24 is not recommended for deployment\n",
+        "first_markdown_element": "",
+        "id": "4fdaa1943fda7c6196f21cde2a89972a5de2e49314548f4161996d6ef6af4a38",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.24",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".24"
+              ]
+            }
+          }
+        ],
+        "description": "Pragma version^0.4.24 (contracts/shadowing_local.sol#1) allows old versions\n",
+        "markdown": "Pragma version[^0.4.24](contracts/shadowing_local.sol#L1) allows old versions\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L1",
+        "id": "5af9ec4b3f10e707cff01469a9f59c9c79ee589a37bbe56d1fa8f2182e9eda04",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "sensitive_function",
+            "source_mapping": {
+              "start": 63,
+              "length": 113,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                4,
+                5,
+                6,
+                7
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "sensitive_function(address)"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function Bug.sensitive_function(address) (contracts/shadowing_local.sol#4-7) is not in mixedCase\n",
+        "markdown": "Function [Bug.sensitive_function(address)](contracts/shadowing_local.sol#L4-L7) is not in mixedCase\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L4-L7",
+        "id": "4ce223bcf10c66213fb4e41e2c373ce372fee2a9fbe42d2def32c499c80223f7",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "alternate_sensitive_function",
+            "source_mapping": {
+              "start": 182,
+              "length": 147,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "alternate_sensitive_function()"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function Bug.alternate_sensitive_function() (contracts/shadowing_local.sol#8-12) is not in mixedCase\n",
+        "markdown": "Function [Bug.alternate_sensitive_function()](contracts/shadowing_local.sol#L8-L12) is not in mixedCase\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L8-L12",
+        "id": "b70ec18914abff4d3de091e145da61c6941b6a88146b6d30d598df51963fbeb9",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 46,
+              "length": 10,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 15
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "contract",
+            "name": "Bug",
+            "source_mapping": {
+              "start": 26,
+              "length": 306,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            }
+          }
+        ],
+        "description": "Bug.owner (contracts/shadowing_local.sol#3) is never used in Bug (contracts/shadowing_local.sol#2-14)\n",
+        "markdown": "[Bug.owner](contracts/shadowing_local.sol#L3) is never used in [Bug](contracts/shadowing_local.sol#L2-L14)\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L3",
+        "id": "61a6bd71d6906a186407622e95dd4c8fb5657df98ba7fa66f5489e0c3725cd12",
+        "check": "unused-state",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 46,
+              "length": 10,
+              "filename_relative": "contracts/shadowing_local.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+              "filename_short": "contracts/shadowing_local.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 15
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Bug",
+                "source_mapping": {
+                  "start": 26,
+                  "length": 306,
+                  "filename_relative": "contracts/shadowing_local.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_local.sol",
+                  "filename_short": "contracts/shadowing_local.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Bug.owner (contracts/shadowing_local.sol#3) should be constant\n",
+        "markdown": "[Bug.owner](contracts/shadowing_local.sol#L3) should be constant\n",
+        "first_markdown_element": "contracts/shadowing_local.sol#L3",
+        "id": "62b1a4a6354925c65d11ccce4da4a42482746e8d265a5684641f2ec2a1305208",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

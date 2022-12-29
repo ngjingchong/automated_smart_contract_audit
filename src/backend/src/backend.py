@@ -13,6 +13,7 @@ import sys
 import os
 
 # os.system('cmd /c "pip install -r requirements.txt"')
+# os.system('cmd /c "slither ./contracts/InsecureEtherVault.sol --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./reports/report.json"')
 
 # contracts = ["Reentrancy.sol"] #get name of contracts to be audited in this session
 # for c in contracts:
@@ -149,7 +150,7 @@ def delete_contract():
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
     print(req)
-    file_path = r'\automated_smart_contract_audit\src\backend\contracts\\' + req3
+    file_path = r'C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\contracts\\' + req3
     res = os.remove(file_path)
   return file_path
 
@@ -160,7 +161,7 @@ def delete_report():
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
     print(req)
-    file_path = r'.\\src\\reports\\' + req3
+    file_path = r'C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\reports\\' + req3
     res = os.remove(file_path)
   return file_path
 
