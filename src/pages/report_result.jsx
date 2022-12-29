@@ -31,7 +31,7 @@ const ReportResult = () => {
         }
     }, [percentage]);
 
-    var highCount = 0, mediumCount = 0, minorCount = 0, infoCount = 0, optiCount = 0
+    var highCount = 0, mediumCount = 0, lowCount = 0, infoCount = 0, optiCount = 0
 
     for (let i = 0; i < notes.length; i++) {
         if (notes[i].impact == 'High') {
@@ -40,8 +40,8 @@ const ReportResult = () => {
         else if (notes[i].impact == 'Medium') {
             mediumCount += 1
         }
-        else if (notes[i].impact == 'Minor') {
-            minorCount += 1
+        else if (notes[i].impact == 'Low') {
+            lowCount += 1
         }
         else if (notes[i].impact == 'Informational') {
             infoCount += 1
@@ -51,13 +51,13 @@ const ReportResult = () => {
         }
     }
 
-    let totalErr = highCount + mediumCount + minorCount + infoCount + optiCount;
-    let totalPercentage = ((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((minorCount / totalErr) * 15) + ((infoCount / totalErr) * 5) + ((optiCount / totalErr) * 0)
+    let totalErr = highCount + mediumCount + lowCount + infoCount + optiCount;
+    let totalPercentage = ((highCount / totalErr) * 50) + ((mediumCount / totalErr) * 30) + ((lowCount / totalErr) * 15) + ((infoCount / totalErr) * 5) + ((optiCount / totalErr) * 0)
 
     const severity = [
         { count: highCount, label: 'High', color: 'danger' },
         { count: mediumCount, label: 'Medium', color: 'warning' },
-        { count: minorCount, label: 'Minor', color: 'primary' },
+        { count: lowCount, label: 'Low', color: 'primary' },
         { count: infoCount, label: 'Informational', color: 'info' },
         { count: optiCount, label: 'Optimization', color: 'dark' }
     ]
@@ -172,7 +172,7 @@ const ReportResult = () => {
                         </div>
                         <div style={{ marginRight: "75px", width: 130 }}>
                             <div id="percentage">
-                                <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                                <CircularProgressbar value={percentage} text={`${percentage.toFixed(2)}%`} />
                             </div>
                             <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
                         </div>
@@ -201,7 +201,7 @@ const ReportResult = () => {
                             {notes.map((note, index) => {
                                 let color = note.impact === "High" ? '#feb9b9' :
                                     note.impact === "Medium" ? '#ffcc80' :
-                                        note.impact === "Minor" ? '#90caf9' :
+                                        note.impact === "Low" ? '#90caf9' :
                                             note.impact === 'Informational' ? '#d0fefe' : '#d8dcd6';
                                 return (
                                     <tr key={index} style={{ backgroundColor: color }}>
@@ -227,7 +227,7 @@ const ReportResult = () => {
         return (
             <div id="reportNow">
                 <Header />
-                <div style={styles.screenContent}>
+                <div style={styles.screenContent2}>
                     <div style={styles.centerContent}>
                         <div style={{ marginRight: "75px", width: 130 }}>
                             <div id="percentage">
@@ -389,7 +389,11 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        marginTop: "9rem", position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
+        marginTop: "480px", position: 'absolute', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
+    },
+
+    screenContent2: {
+        marginTop: "340px", position: 'absolute', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
     },
 
     noteImg: {

@@ -29,6 +29,19 @@ function ListOfContract() {
       })
   }
 
+  function handleScan(data) {
+    console.log(data)
+    axios(
+      {
+        url: 'http://127.0.0.1:5000/scan_vulnerabilities',
+        method: 'POST',
+        data: data
+      })
+      .then((response) => {
+        console.log(response)
+      })
+  }
+
   function deleteFileHandler(delpath) {
     console.log(delpath)
     Swal.fire({
@@ -92,7 +105,7 @@ function ListOfContract() {
                 <div className="ms-2 me-auto">
                   <div className="fw-bold">{contract}</div>
                 </div>
-                <ListGroup.Item action style={styles.scanButton} id="scan">
+                <ListGroup.Item action style={styles.scanButton} id="scan" key={i} value={contract} onClick={e => handleScan(e.target.value)}>
                   Scan
                 </ListGroup.Item>
                 <ListGroup.Item style={{ padding: 0, margin: 15, width: "8px", borderStyle: "none" }} actionkey={i} name={contract} onClick={e => deleteFileHandler(contract)} >

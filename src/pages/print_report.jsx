@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        position: 'absolute', left: '50%', marginTop: "105%", transform: 'translate(-50%, -50%)', padding: "9px",
+        position: 'absolute', left: '50%', marginTop: "85rem", transform: 'translate(-50%, -50%)',
     },
 
     card: {
