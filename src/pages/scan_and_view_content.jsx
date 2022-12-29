@@ -10,7 +10,7 @@ import Header from "./header";
 function ScanAndViewContent() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div style={styles.listContainer}>
         <Tabs fill>
           <Tab eventKey="contract" title="Contract">
@@ -27,7 +27,7 @@ function ScanAndViewContent() {
 
 const styles = StyleSheet.create({
   listContainer: {
-    width: '550px', 
+    width: '100%', 
     position: 'absolute',
     left: '50%',
     top: '60%',
