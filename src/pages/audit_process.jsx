@@ -128,18 +128,4 @@ function Audit_Process() {
   )
 }
 
-// sending notification to users
-// function showStayHydratedNotification() {
-//   chrome.notifications.create({
-//     type: 'basic',
-//     iconUrl: 'stay_hydrated.png',
-//     title: 'Time to Hydrate',
-//     message: 'Everyday I\'m Guzzlin\'!',
-//     buttons: [
-//       { title: 'Keep it Flowing.' }
-//     ],
-//     priority: 0
-//   });
-// }
-
 export default Audit_Process;

@@ -2,6 +2,7 @@ import logo from '../images/XContractLogo.png';
 import React from "react";
 import Nav from './nav';
 import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 function Header() {
   return (
