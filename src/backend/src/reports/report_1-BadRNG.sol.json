@@ -36,7 +36,7 @@
         "first_markdown_element": "contracts/1-BadRNG.sol#L2",
         "id": "5cef9ed04044718e440fd40a24bf86f8747a66c4fe9fd2b6c5f603af799b0e64",
         "check": "solc-version",
-        "impact": "Informational",
+        "impact": "Optimization",
         "confidence": "High"
       },
       {
