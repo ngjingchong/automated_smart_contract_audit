@@ -5,19 +5,23 @@ import ListOfReport from './list_of_report';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { StyleSheet } from 'react-native';
+import Header from "./header";
 
 function ScanAndViewContent() {
   return (
-    <div style={styles.listContainer}>
-      <Tabs fill>
-        <Tab eventKey="contract" title="Contract">
-          <ListOfContract/>
-        </Tab>
-        <Tab eventKey="report" title="Report">
-          <ListOfReport/>
-        </Tab>
-      </Tabs>
-    </div>
+    <>
+      <Header />
+      <div style={styles.listContainer}>
+        <Tabs fill>
+          <Tab eventKey="contract" title="Contract">
+            <ListOfContract/>
+          </Tab>
+          <Tab eventKey="report" title="Report">
+            <ListOfReport/>
+          </Tab>
+        </Tabs>
+      </div>
+    </>
     )
 }
 
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
     width: '550px', 
     position: 'absolute',
     left: '50%',
-    top: '50%',
+    top: '60%',
     transform: 'translate(-50%, -50%)',
   }
 });

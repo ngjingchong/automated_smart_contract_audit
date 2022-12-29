@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import Header from "./header";
 import StepProgressBar from 'react-step-progress';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 import 'react-step-progress/dist/index.css';
 import './audit_process.css';
 
 import FileList from './contract_file_list';
+import FileItem from './contract_file_item'
 import ContractUploader from './contract_uploader';
 import VulnerabilityPicker from './contract_vulnerabilities_picker';
 import Scan from './contract_scan_progress_indicator';
@@ -16,7 +18,9 @@ function Audit_Process() {
   const [contracts, setContracts] = useState([])
   const [detectorSelected, setDetector] = useState()
   const [percent, setPercent] = useState(0)
-  const prevContractsRev = useRef(contracts)
+  const prevContractsRev = useRef(contracts)  
+  const navigate = useNavigate();
+  var fileList_component = <></>
 
   const setContractsHandler = (new_contracts) => {
     const new_contracts_list = prevContractsRev.current.concat(new_contracts)
@@ -36,6 +40,8 @@ function Audit_Process() {
   useEffect(() => {
     document.getElementById("logoutAlert").style.display = "none"
     prevContractsRev.current = contracts
+    fileList_component = fileList()
+    console.log(fileList_component)
   },[contracts])
 
   useEffect(() => { // run when user picked an detector to scan against their smart contracts
@@ -89,6 +95,45 @@ function Audit_Process() {
     return true;
   }
 
+  const redirectHandler = () => {
+    if (prevContractsRev.current.length === 1){
+      const data = "report_" + prevContractsRev.current[0].path + ".json"
+      // console.log(data)
+      navigate('../report_result', { state: data });
+    } else {
+      navigate('../scan_and_view_content');
+    }
+    // console.log(prevContractsRev)
+  }
+
+  const passContracts = (a) => {
+    return a
+  }
+  const fileList = () => {
+    if (contracts.length > 0){
+      // console.log(contracts)
+      return (
+        <aside>
+          <p>Files Uploaded</p>
+          <ul>
+            {
+              contracts &&
+              contracts.map(f => (<FileItem
+                key={f.name}
+                file={f}
+                deleteFile={deleteFileHandler} />))
+            }
+          </ul>
+        </aside>
+      )
+    } else {
+      // console.log(contracts)
+      return (
+        <></>
+      )
+    }
+  }
+
   return (
     <div id='audit_process' className='container_wrapper'>
       <Header/>
@@ -102,7 +147,8 @@ function Audit_Process() {
               content: 
                 <>
                   <ContractUploader setContractsHandler={setContractsHandler} />
-                  <FileList contracts={prevContractsRev.current} removeFile={removeFile} />
+                  {/* {fileList_component} */}
+                  {/* <FileList contracts={prevContractsRev.current} removeFile={removeFile} getContracts={passContracts}/> */}
                 </>,
               validator: () => step1Validator(prevContractsRev.current)
             },
@@ -119,7 +165,7 @@ function Audit_Process() {
             {
               label: 'Audit Report',
               name: 'step 4',
-              content: <AuditReport/>
+              content: <AuditReport redirectHandler={redirectHandler}/>
             }
           ]}
         />

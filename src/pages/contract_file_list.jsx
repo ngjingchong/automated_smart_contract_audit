@@ -1,11 +1,13 @@
 import React from 'react'
 import FileItem from './contract_file_item'
 
-const FileList = ({ contracts, removeFile }) => {
+const FileList = ({ contracts, removeFile, getContracts }) => {
   const deleteFileHandler = (_name) => {
       removeFile(_name)
   }
-  console.log(contracts)
+  
+  console.log(getContracts())
+  
   if (contracts.length > 0){
     return (
       <aside>
