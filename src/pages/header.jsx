@@ -4,12 +4,12 @@ import Nav from './nav';
 import { StyleSheet } from 'react-native';
 
 function Header() {
-  return (
-    <div style={{ display: "contents" }}>
-      <img style={styles.centerItem} src={logo} className="page_logo" alt="logo" id="heading" />
-      <Nav />
-    </div>
-  )
+    return (
+      <div style={{display: "contents"}}>
+        <img style={styles.centerItem} src={logo} className="page_logo" alt="logo" id="heading"/>
+        <Nav />
+      </div>
+    )
 }
 
 const styles = StyleSheet.create({

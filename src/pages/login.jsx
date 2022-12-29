@@ -141,7 +141,7 @@ function Login(props) {
             </Row>
             <Row>
               <Col>
-                <div style={{backgroundColor: "silver", height: "300px", marginTop: "15px", borderRadius: "4px"}}><ListOfContent/></div>
+                <div style={{height: "300px", borderRadius: "4px"}}><ListOfContent/></div>
               </Col>
             </Row>
           </Container>

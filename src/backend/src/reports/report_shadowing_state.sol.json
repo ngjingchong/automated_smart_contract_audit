@@ -1,0 +1,169 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 177,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_state.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+              "filename_short": "contracts/shadowing_state.sol",
+              "is_dependency": false,
+              "lines": [
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DerivedContract",
+                "source_mapping": {
+                  "start": 130,
+                  "length": 216,
+                  "filename_relative": "contracts/shadowing_state.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+                  "filename_short": "contracts/shadowing_state.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 28,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_state.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+              "filename_short": "contracts/shadowing_state.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BaseContract",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 128,
+                  "filename_relative": "contracts/shadowing_state.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+                  "filename_short": "contracts/shadowing_state.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "DerivedContract.owner (contracts/shadowing_state.sol#9) shadows:\n\t- BaseContract.owner (contracts/shadowing_state.sol#2)\n",
+        "markdown": "[DerivedContract.owner](contracts/shadowing_state.sol#L9) shadows:\n\t- [BaseContract.owner](contracts/shadowing_state.sol#L2)\n",
+        "first_markdown_element": "contracts/shadowing_state.sol#L9",
+        "id": "9c5c3fc5091b9ecd6ec271fdbb3036d9d3426cdf9a09d6cc293fd7de9240e4ab",
+        "check": "shadowing-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is not recommended for deployment\n",
+        "markdown": "solc-0.4.24 is not recommended for deployment\n",
+        "first_markdown_element": "",
+        "id": "4fdaa1943fda7c6196f21cde2a89972a5de2e49314548f4161996d6ef6af4a38",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "owner",
+            "source_mapping": {
+              "start": 28,
+              "length": 13,
+              "filename_relative": "contracts/shadowing_state.sol",
+              "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+              "filename_short": "contracts/shadowing_state.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 18
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BaseContract",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 128,
+                  "filename_relative": "contracts/shadowing_state.sol",
+                  "filename_absolute": "C:\\Users\\ngjin\\FYP_Smart-Contract-Audit\\automated_smart_contract_audit\\src\\backend\\src\\contracts\\shadowing_state.sol",
+                  "filename_short": "contracts/shadowing_state.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "BaseContract.owner (contracts/shadowing_state.sol#2) should be constant\n",
+        "markdown": "[BaseContract.owner](contracts/shadowing_state.sol#L2) should be constant\n",
+        "first_markdown_element": "contracts/shadowing_state.sol#L2",
+        "id": "8397663a155c23e5c7c2edc13d34a84f80ea64df2643120f0dd0246799782367",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

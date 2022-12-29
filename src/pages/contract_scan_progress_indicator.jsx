@@ -13,9 +13,9 @@ const Scan = ({percent, setPercent}) => {
       const new_percentage = Math.trunc((percentage + (remaining_percentage*0.3)))
       if (new_percentage < 100) {
         // console.log("new => " + new_percentage)
-        setTimeout(() => setPercentage(new_percentage), 1000);
+        setTimeout(() => setPercentage(new_percentage), 500);
         if (new_percentage === 97){
-          setTimeout(() => setPercentage(100), 1000);
+          setTimeout(() => setPercentage(100), 500);
         }
       }  
     } else {

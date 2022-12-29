@@ -13,6 +13,7 @@ import sys
 import os
 
 # os.system('cmd /c "pip install -r requirements.txt"')
+# os.system('cmd /c "slither ./contracts/InsecureEtherVault.sol --solc-remaps @openzeppelin=../../node_modules/@openzeppelin --json ./reports/report.json"')
 
 # contracts = ["Reentrancy.sol"] #get name of contracts to be audited in this session
 # for c in contracts:
@@ -36,10 +37,11 @@ detectors_dictionary = {
   # "access_control": ["protected-vars", "suicidal", "unprotected-upgrade", "variable-scope", "events-access", "events-maths"],
   # "interface": ["domain-separator-collision", "erc20-interface", "erc721-interface", "erc20-indexed"],
   # "missing_initialization": ["uninitialized-state", "uninitialized-storage", "uninitialized-local", "uninitialized-fptr-cst", "void-cst", "function-init-state"],
-  # "treacherous_elements_usage": ["backdoor", "shadowing-state", "controlled-delegatecall", "shadowing-abstract", "tx-origin", "shadowing-builtin", "shadowing-local", "assembly", "rtlo", "public-mappings-nested"],
+  # "treacherous_elements_usage": ["backdoor", "controlled-delegatecall", "tx-origin", "assembly", "rtlo", "public-mappings-nested"],
+  "shadowing": ["shadowing-state", "shadowing-abstract", "shadowing-builtin", "shadowing-local"],
   # "erroneous_usage": ["weak-prng", "timestamp", "similar-names", "too-many-digits"],
   # "redundancy": ["multiple-constructors", "name-reused", "write-after-write", "reused-constructor", "unused-return", "redundant-statements", "unimplemented-functions", "unused-state", "dead-code"],
-  "storage_manipulation": ["abiencoderv2-array", "array-by-reference", "storage-array"],
+  # "storage_manipulation": ["abiencoderv2-array", "array-by-reference", "storage-array"],
   # "best_practices": ["incorrect-shift", "controlled-array-length", "unchecked-transfer", "incorrect-equality", "locked-ether", "mapping-deletion", "divide-before-multiply", "unchecked-lowlevel", "unchecked-send", "incorrect-modifier", "incorrect-unary", "missing-zero-check", "assert-state-change", "missing-inheritance", "naming-convention", "constable-states", "external-function"],
   # "low_level": ["arbitrary-send-erc20", "arbitrary-send-erc20-permit", "arbitrary-send-eth", "low-level-calls"],
   # "contraditions_affirmation": ["enum-conversion", "tautology", "boolean-cst", "boolean-equal"],
@@ -113,14 +115,14 @@ def matrix_mapping (matrix):
 
 @api.route('/file')
 def display_file():
-  dir_path = r"\automated_smart_contract_audit\src\backend\src\contracts"
+  dir_path = r"C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\contracts"
   res = os.listdir(dir_path)
   return res
   fp.close()
 
 @api.route('/report')
 def display_report():
-  dir_path = r"\automated_smart_contract_audit\src\backend\src\reports"
+  dir_path = r"C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\reports"
   res = os.listdir(dir_path)
   return res
   fp.close()
@@ -131,7 +133,7 @@ def display_report_result():
     req = request.data.decode('UTF-8')
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
-    file_path = r'\automated_smart_contract_audit\src\backend\src\reports\\' + req3
+    file_path = r'C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\reports\\' + req3
     try:
       with open(file_path, "r+") as fp:
         # reading the contents before writing
@@ -148,7 +150,7 @@ def delete_contract():
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
     print(req)
-    file_path = r'\automated_smart_contract_audit\src\backend\contracts\\' + req3
+    file_path = r'C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\contracts\\' + req3
     res = os.remove(file_path)
   return file_path
 
@@ -159,7 +161,7 @@ def delete_report():
     req2 = req.replace('["','')
     req3 = req2.replace('"]','')
     print(req)
-    file_path = r'.\\src\\reports\\' + req3
+    file_path = r'C:\Users\ngjin\FYP_Smart-Contract-Audit\automated_smart_contract_audit\src\backend\src\reports\\' + req3
     res = os.remove(file_path)
   return file_path
 
