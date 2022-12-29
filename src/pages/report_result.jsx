@@ -26,8 +26,7 @@ const ReportResult = () => {
             setNotes(state.results.detectors);
             setPercentage(totalPercentage)
         }
-        else
-        {
+        else {
             setPercentage(0)
         }
     }, [percentage]);
@@ -164,19 +163,12 @@ const ReportResult = () => {
     if (notes.length > 0) {
         return (
             <div id="reportNow">
-                <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
+                <Header />
                 <div style={styles.screenContent}>
                     <div style={styles.centerContent}>
                         <Button variant="text" onClick={handlePrint}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
-                        <div className="ms-2 me-auto">
-                            <div>
-                                <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
-                                    <p>Date Audited: </p>
-                                    <p><b>00 Dec 0000</b></p>
-                                    <p>Vulnerability:</p>
-                                    <p><b>Pull Vulnerability</b></p>
-                                </div>
-                            </div>
+                        <div style={{ marginTop: 70 }} className="ms-2 me-auto">
+                            <h3>Final Results</h3>
                         </div>
                         <div style={{ marginRight: "75px", width: 130 }}>
                             <div id="percentage">
@@ -227,32 +219,21 @@ const ReportResult = () => {
                     isOpen={isTourOpen}
                     onRequestClose={() => setIsTourOpen(false)}
                 />
+                <Button style={styles.tourGuideButton} onClick={() => setIsTourOpen(true)}>Tour Guide</Button>
             </div >
         )
     }
-    else
-    {
+    else {
         return (
             <div id="reportNow">
-                <Button style={{ marginLeft: '350%', marginTop: '50px' }} onClick={() => setIsTourOpen(true)} className="btn-primary"> Tour </Button>
+                <Header />
                 <div style={styles.screenContent}>
                     <div style={styles.centerContent}>
-                        <Button variant="text" onClick={handlePrint} disabled={true}><img src={noteLogo} id="downloadPDF" alt="logo" style={styles.noteImg} /></Button>
-                        <div className="ms-2 me-auto">
-                            <div>
-                                <div style={{ marginTop: 30, marginLeft: "15px", lineHeight: "1" }}>
-                                    <p>Date Audited: </p>
-                                    <p><b>00 Dec 0000</b></p>
-                                    <p>Vulnerability:</p>
-                                    <p><b>Pull Vulnerability</b></p>
-                                </div>
-                            </div>
-                        </div>
                         <div style={{ marginRight: "75px", width: 130 }}>
                             <div id="percentage">
                                 <CircularProgressbar value={percentage} text={`${percentage}%`} />
                             </div>
-                            <p style={{ textAlign: "center", marginTop: "5px" }}><b>Contract Severity</b></p>
+                            <p style={{ textAlign: "center", marginTop: "5px" }}><b>No Vulnerability</b></p>
                         </div>
                     </div>
 
@@ -276,15 +257,11 @@ const ReportResult = () => {
                             </tr>
                         </thead>
                         <tbody style={{ textAlign: "center" }}>
-                            {notes.map((note, index) => {
-                                return (
-                                    <tr key={index} style={{ backgroundColor: '#abf7b1' }}>
-                                        <td><b>NONE</b></td>
-                                        <td><b>NONE</b></td>
-                                        <td><b>NONE</b></td>
-                                    </tr>
-                                );
-                            })}
+                            <tr style={{ backgroundColor: '#abf7b1' }}>
+                                <td><b>none</b></td>
+                                <td><b>none</b></td>
+                                <td><b>none</b></td>
+                            </tr>
                         </tbody>
                     </Table>
                 </div>
@@ -293,6 +270,7 @@ const ReportResult = () => {
                     isOpen={isTourOpen}
                     onRequestClose={() => setIsTourOpen(false)}
                 />
+                <Button style={styles.tourGuideButton} onClick={() => setIsTourOpen(true)}>Tour Guide</Button>
             </div >
         )
     }
@@ -411,7 +389,7 @@ const styles = StyleSheet.create({
     },
 
     screenContent: {
-        position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
+        marginTop: "9rem", position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', backgroundColor: "white", padding: "9px",
     },
 
     noteImg: {
@@ -429,6 +407,10 @@ const styles = StyleSheet.create({
     titleContainer: {
         marginBottom: "5px", marginTop: "10px", fontWeight: "bold", textAlign: "center", fontSize: "18px"
     },
+
+    tourGuideButton: {
+        fontWeight: "bold", backgroundColor: "#78909c", bottom: 0, margin: 20, position: "fixed", right: 20, borderRadius: "50%", height: 90, width: 90
+    }
 });
 
 export default ReportResult;

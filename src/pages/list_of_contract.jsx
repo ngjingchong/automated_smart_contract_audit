@@ -4,6 +4,7 @@ import solidityLogo from '../images/solidityLogo.png';
 import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import Tour from 'reactour'
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 function ListOfContract() {
 
   const [contracts, setContracts] = useState([])
+  const [isTourOpen, setIsTourOpen] = useState(false);
 
   useEffect(() => {
     getAllContracts();
@@ -82,7 +84,7 @@ function ListOfContract() {
   else {
     return (
       <div>
-        <ListGroup style={styles.listGroup}>
+        <ListGroup style={styles.listGroup} id="contract">
           {contracts.map((contract, i) => {
             return (
               <ListGroup.Item className="d-flex justify-content-between align-items-center">
@@ -90,26 +92,45 @@ function ListOfContract() {
                 <div className="ms-2 me-auto">
                   <div className="fw-bold">{contract}</div>
                 </div>
-                <ListGroup.Item action style={styles.scanButton}>
+                <ListGroup.Item action style={styles.scanButton} id="scan">
                   Scan
                 </ListGroup.Item>
-                <ListGroup.Item style={{padding: 0, margin: 15, width: "8px", borderStyle:"none"}} actionkey={i} name={contract} onClick={e => deleteFileHandler(contract)} >
-                <FontAwesomeIcon
-                  icon={faTrash} color="#D4D4D4" style={{fontSize: "1.3rem"}}
-                />
-              </ListGroup.Item>
+                <ListGroup.Item style={{ padding: 0, margin: 15, width: "8px", borderStyle: "none" }} actionkey={i} name={contract} onClick={e => deleteFileHandler(contract)} >
+                  <FontAwesomeIcon
+                    icon={faTrash} color="#D4D4D4" style={{ fontSize: "1.3rem" }} id="delete"
+                  />
+                </ListGroup.Item>
               </ListGroup.Item>
             )
           })}
-
         </ListGroup>
         <div style={{ backgroundColor: "white", textAlign: "center" }}>
-          <Link to="/audit_process" className="btn btn-primary" style={{ width: "15rem", margin: "10px" }}>Upload Contract to Scan</Link>
+          <Link onClick={() => setIsTourOpen(true)} className="btn btn-primary" style={{ width: "10rem", margin: "6px" }}>Tour Guide</Link>
         </div>
+        <Tour
+          steps={steps}
+          isOpen={isTourOpen}
+          onRequestClose={() => setIsTourOpen(false)}
+        />
       </div>
     );
   }
 }
+
+const steps = [
+  {
+    selector: "#contract",
+    content: "Here is the list of contracts scanned before.",
+  },
+  {
+    selector: "#scan",
+    content: "Click here to scan the contract again.",
+  },
+  {
+    selector: "#delete",
+    content: "Click here to delete the contract.",
+  },
+];
 
 const styles = StyleSheet.create({
   scanButton: {
@@ -124,9 +145,8 @@ const styles = StyleSheet.create({
     textTransform: "uppercase"
   },
   listGroup: {
-    maxHeight: "380px",
+    maxHeight: "210px",
     overflowY: "scroll",
-    backgroundColor: "white"
   }
 });
 

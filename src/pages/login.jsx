@@ -10,6 +10,7 @@ import { gapi } from 'gapi-script';
 import Figure from 'react-bootstrap/Figure';
 // import Report_Result from './report_result';
 import FacebookLogin from 'react-facebook-login';
+import ListOfContent from './scan_and_view_content';
 import './login.scss'
 
 function Login(props) {
@@ -140,7 +141,7 @@ function Login(props) {
             </Row>
             <Row>
               <Col>
-                <div style={{backgroundColor: "silver", height: "300px", marginTop: "15px", borderRadius: "4px"}}>Reports Here</div>
+                <div style={{backgroundColor: "silver", height: "300px", marginTop: "15px", borderRadius: "4px"}}><ListOfContent/></div>
               </Col>
             </Row>
           </Container>
