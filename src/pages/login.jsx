@@ -88,7 +88,7 @@ function Login(props) {
     var fb_profile = response
     fb_profile["imageUrl"] = response.picture.data.url
     
-    setProfile([response]);
+    setProfile([fb_profile]);
   }
 
   if (profile.length > 0) {

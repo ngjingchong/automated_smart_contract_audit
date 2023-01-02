@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from slither.detectors import all_detectors
 import inspect
-from slither.detectors.abstract_detector import DetectorClassification, AbstractDetector
+from slither.detectors import all_detectors
+from slither.detectors.abstract_detector import AbstractDetector
 import json
 
 
