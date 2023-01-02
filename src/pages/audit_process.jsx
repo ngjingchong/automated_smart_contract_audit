@@ -8,7 +8,6 @@ import 'react-step-progress/dist/index.css';
 import './audit_process.css';
 
 import FileList from './contract_file_list';
-import FileItem from './contract_file_item'
 import ContractUploader from './contract_uploader';
 import VulnerabilityPicker from './contract_vulnerabilities_picker';
 import Scan from './contract_scan_progress_indicator';
@@ -21,22 +20,39 @@ function Audit_Process() {
   const prevContractsRev = useRef(contracts)  
   const navigate = useNavigate();
 
+  /* concate the new smart contracts files into the state currently holding uploaded contracts */
   const setContractsHandler = (new_contracts) => {
     const new_contracts_list = prevContractsRev.current.concat(new_contracts)
     setContracts(new_contracts_list)
   }
+  // allow user to remove specific smart contract uploaded from the state
   const removeFile = (files) => {
-    console.log(files)
     setContracts(files)
     prevContractsRev.current = files
   }
-
+  // for the component to obtain latest list of smart contracts uploaded
+  const passContracts = () => {
+    return prevContractsRev.current
+  }
+  /* validator to ensure user has uploaded at least 1 contract to be scanned before proceeding to next step */
+  const step1Validator = (contracts) => {
+    if (contracts.length === 0){
+      alert("Please upload at least 1 contract to proceed")
+      return false
+    }
+    return true;
+  }
 
   useEffect(() => {
     document.getElementById("logoutAlert").style.display = "none"
     prevContractsRev.current = contracts
   },[contracts])
-
+  useEffect(() => {
+    if(percent === 100){
+      // direct user to next step if the percentage has reached 100%
+      document.getElementsByClassName("_hsN1w")[0].click()
+    }
+  },[percent])
   useEffect(() => { // run when user picked an detector to scan against their smart contracts
     if (detectorSelected) {
       if(window.confirm("start scanning your smart contracts agains > " + detectorSelected.id + "?")) {
@@ -59,33 +75,14 @@ function Audit_Process() {
         })
 
         // To list out what are the files in the formData
-        // for(let obj of formData) {
-        //   console.log(obj); // key1 = value1, then key2 = value2
-        // }
+        /*for(let obj of formData) {
+            console.log(obj); // key1 = value1, then key2 = value2
+          }*/
       }
     }
   },[detectorSelected])
-
-  useEffect(() => {
-    if(percent === 100){
-      // direct user to next step if the percentage has reached 100%
-      document.getElementsByClassName("_hsN1w")[0].click()
-    }
-  },[percent])
-
   const set_scan_vulnerability = (vulnerabilityAuditorPicked) => {
-    // console.log(vulnerabilityAuditorPicked)
     setDetector(vulnerabilityAuditorPicked)
-  }
-
-  // setup step validators, will be called before proceeding to the next step
-  const step1Validator = (contracts) => {
-    // ensure user has uploaded at least 1 contract to be scanned before proceeding to next step
-    if (contracts.length === 0){
-      alert("Please upload at least 1 contract to proceed")
-      return false
-    }
-    return true;
   }
 
   const redirectHandler = () => {
@@ -106,11 +103,6 @@ function Audit_Process() {
     // } else {
       navigate('../scan_and_view_content');
     // }
-    // console.log(prevContractsRev)
-  }
-
-  const passContracts = () => {
-    return prevContractsRev.current
   }
 
   return (
@@ -133,7 +125,8 @@ function Audit_Process() {
             {
               label: 'Vulnerability',
               name: 'step 2',
-              content: <VulnerabilityPicker detectorSelected={detectorSelected} set_scan_vulnerability={set_scan_vulnerability}/>
+              content: <VulnerabilityPicker detectorSelected={detectorSelected} 
+              set_scan_vulnerability={set_scan_vulnerability}/>
             },
             {
               label: 'Scanning',

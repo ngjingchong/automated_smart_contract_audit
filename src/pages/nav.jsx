@@ -75,7 +75,10 @@ function Navigation() {
         </Nav.Item>
       </Nav>
       
-      <Login show={modalShow} onHide={() => setModalShow(false)} handleLogout={() => setIsLogout(true)} isFirstRender={isFirstRender}/>
+      <Login show={modalShow} 
+             onHide={() => setModalShow(false)} 
+             handleLogout={() => setIsLogout(true)} 
+             isFirstRender={isFirstRender}/>
       
       <Alert id="logoutAlert" style={Alert_position_style} key="success" variant="success">
         You have successfully <b>logged out</b> from your <em>Google/Facebook</em> account !
